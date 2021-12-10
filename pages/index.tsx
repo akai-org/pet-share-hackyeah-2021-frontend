@@ -1,6 +1,19 @@
-import type { NextPage } from 'next';
-import { Test } from '@components/Test';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
-const Home: NextPage = () => <Test testProp="Test Message" />;
-
-export default Home;
+export default function Component() {
+  const { data: session } = useSession();
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
+  return (
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  );
+}
