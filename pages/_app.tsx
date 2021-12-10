@@ -1,20 +1,22 @@
-import { useState, useRef } from "react";
-import { SnackbarProvider } from "notistack";
-import { SessionProvider } from "next-auth/react";
-import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { IconButton } from "@mui/material";
-import { FaTimes } from "react-icons/fa";
-import "../styles/globals.css";
+/* eslint "react/no-unstable-nested-components":"off" */
+
+import { useState, useRef } from 'react';
+import { SnackbarProvider } from 'notistack';
+import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { IconButton } from '@mui/material';
+import { FaTimes } from 'react-icons/fa';
+import '../styles/globals.css';
 
 const theme = createTheme({
   palette: {
-    mode: "light",
+    mode: 'light',
   },
 });
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   const [queryClient] = useState(() => new QueryClient());
   const notistackRef = useRef();
 
@@ -23,8 +25,8 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <SnackbarProvider
           anchorOrigin={{
-            vertical: "top",
-            horizontal: "center",
+            vertical: 'top',
+            horizontal: 'center',
           }}
           ref={notistackRef}
           action={(key) => (
@@ -40,13 +42,13 @@ function MyApp({ Component, pageProps }) {
           <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
               <Component {...pageProps} />
-              {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
+              {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
             </Hydrate>
           </QueryClientProvider>
         </SnackbarProvider>
       </ThemeProvider>
     </SessionProvider>
   );
-}
+};
 
 export default MyApp;
