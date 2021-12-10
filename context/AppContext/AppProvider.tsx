@@ -8,13 +8,12 @@ export const AppProvider: FunctionComponent = ({ children }) => {
         setUser(true);
     }
 
+    const value = React.useMemo(() => ({
+        user, fetchUser: getUser
+    }), [user]);
+
     return (
-        <AppContext.Provider
-            value={{
-                user,
-                fetchUser: getUser
-            }}    
-        >
+        <AppContext.Provider value={value}>
             {children}
         </AppContext.Provider>
     )
