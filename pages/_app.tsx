@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import { FaTimes } from 'react-icons/fa';
 import '../styles/globals.css';
+import { AppProvider } from '@context/AppContext/AppProvider';
 
 const theme = createTheme({
   palette: {
@@ -21,33 +22,35 @@ const MyApp = ({ Component, pageProps }) => {
   const notistackRef = useRef();
 
   return (
-    <SessionProvider session={pageProps.session}>
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
-          ref={notistackRef}
-          action={(key) => (
-            <IconButton
-              onClick={() => {
-                notistackRef.current.closeSnackbar(key);
-              }}
-            >
-              <FaTimes color="white" size={20} />
-            </IconButton>
-          )}
-        >
-          <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-              <Component {...pageProps} />
-              {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
-            </Hydrate>
-          </QueryClientProvider>
-        </SnackbarProvider>
-      </ThemeProvider>
-    </SessionProvider>
+    <AppProvider>
+      <SessionProvider session={pageProps.session}>
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+            ref={notistackRef}
+            action={(key) => (
+              <IconButton
+                onClick={() => {
+                  notistackRef.current.closeSnackbar(key);
+                }}
+              >
+                <FaTimes color="white" size={20} />
+              </IconButton>
+            )}
+          >
+            <QueryClientProvider client={queryClient}>
+              <Hydrate state={pageProps.dehydratedState}>
+                <Component {...pageProps} />
+                {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
+              </Hydrate>
+            </QueryClientProvider>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </SessionProvider>
+    </AppProvider>
   );
 };
 
