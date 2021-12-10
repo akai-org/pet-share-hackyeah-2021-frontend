@@ -10,6 +10,7 @@ import { IconButton } from '@mui/material';
 import { FaTimes } from 'react-icons/fa';
 import '../styles/globals.css';
 import { AppProvider } from '@context/AppContext/AppProvider';
+import { Topbar } from '@components/topbar';
 
 const theme = createTheme({
   palette: {
@@ -43,6 +44,7 @@ const MyApp = ({ Component, pageProps }) => {
           >
             <QueryClientProvider client={queryClient}>
               <Hydrate state={pageProps.dehydratedState}>
+                <Topbar />
                 <Component {...pageProps} />
                 {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
               </Hydrate>

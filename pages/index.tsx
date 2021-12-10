@@ -1,19 +1,12 @@
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useAppContext } from '@context/AppContext'
+import type { NextPage } from 'next'
 
-export default function Component() {
-  const { data: session } = useSession();
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
+const Home: NextPage = () => {
+  const { user } = useAppContext();
+    
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  );
+    <div>
+      <h1>{ user ? "true" : "false" }</h1>
+    </div>
+  )
 }
