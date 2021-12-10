@@ -1,13 +1,12 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Pet Share
-      </header>
-    </div>
+    <Box>
+      Pet Share
+    </Box>
   );
 }
 
