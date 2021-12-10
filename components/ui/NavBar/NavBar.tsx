@@ -1,8 +1,9 @@
 import React, {FunctionComponent} from 'react';
+import NavBarItem from "@components/ui/NavBar/NavBarItem/NavBarItem";
 
 const NavBar: FunctionComponent = () => (
   <nav>
-    Navigation Bar
+    <NavBarItem>L</NavBarItem>
   </nav>
 )
 
