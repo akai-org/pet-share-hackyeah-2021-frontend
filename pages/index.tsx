@@ -1,18 +1,19 @@
-import { useAppContext } from '@context/AppContext'
-import { Button } from '@mui/material';
-import type { NextPage } from 'next'
+import { useSession, signIn, signOut } from 'next-auth/react';
 
-const Home: NextPage = () => {
-  const { user, fetchUser } = useAppContext();
-
+export default function Component() {
+  const { data: session } = useSession();
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
   return (
-    <div>
-      <h1>{ user ? "true" : "false" }</h1>
-      <Button onClick={() => {
-        fetchUser();
-      }}>User</Button>
-    </div>
-  )
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  );
 }
-
-export default Home;
