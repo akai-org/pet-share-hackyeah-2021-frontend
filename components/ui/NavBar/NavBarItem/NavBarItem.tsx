@@ -1,12 +1,8 @@
-import React, {FunctionComponent, PropsWithChildren} from "react";
+import React, {FunctionComponent} from "react";
 import Link from 'next/link'
 
-export interface Props {
-  href: string
-}
-
-const NavBarItem: FunctionComponent<Props> = (props: PropsWithChildren<Props>) => (
-  <Link href={props.href}>{props.children}</Link>
+const NavBarItem: FunctionComponent = () => (
+  <Link href="/">LINK</Link>
 )
 
 export default NavBarItem;
