@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 
 interface IAppContext {
     user: any;
@@ -10,8 +10,9 @@ export const defaultState = {
     fetchUser: () => {}
 };
 
-export const useAppContext = () => useContext(AppContext);
 
 const AppContext = createContext<IAppContext>(defaultState);
+
+export const useAppContext = () => useContext(AppContext);
 
 export default AppContext;
