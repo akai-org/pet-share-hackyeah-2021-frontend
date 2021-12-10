@@ -11,6 +11,7 @@ import { FaTimes } from 'react-icons/fa';
 import '../styles/globals.css';
 import { AppProvider } from '@context/AppContext/AppProvider';
 import { Topbar } from '@components/topbar';
+import NavBar from "@components/ui/NavBar/NavBar";
 
 const theme = createTheme({
   palette: {
@@ -46,6 +47,7 @@ const MyApp = ({ Component, pageProps }) => {
               <Hydrate state={pageProps.dehydratedState}>
                 <Topbar />
                 <Component {...pageProps} />
+                <NavBar/>
                 {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
               </Hydrate>
             </QueryClientProvider>
