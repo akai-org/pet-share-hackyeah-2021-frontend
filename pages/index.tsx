@@ -1,12 +1,9 @@
 import type { NextPage } from 'next'
-import Box from '@mui/material/Box';
-import { useContext } from 'react';
+import Test from '@components/test';
 
 const Home: NextPage = () => {
   return (
-    <Box>
-      Pet Share
-    </Box>
+    <Test TestProp='Test Message' />
   )
 }
 
