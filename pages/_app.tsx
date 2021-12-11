@@ -27,7 +27,7 @@ const MyApp: FunctionComponent<MyAppProps> = ({Component, pageProps}) => (
   <AppProvider>
     <ThemeProvider theme={theme}>
       <Topbar/>
-      <Box sx={{height: '50px'}}/>
+      <Box/>
       <Component {...pageProps} />
       <NavBar/>
     </ThemeProvider>

@@ -6,15 +6,7 @@ const Home: NextPage = () =>
   // const {user} = useAppContext();
 
   (
-    <Container
-      sx={{
-        height: '80vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-      }}
-    >
+    <Container>
       <h1>PetApp</h1>
       <NavigationTile>
         Organizations
