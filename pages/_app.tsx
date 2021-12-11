@@ -1,17 +1,13 @@
 /* eslint "react/no-unstable-nested-components":"off" */
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { SnackbarProvider } from 'notistack';
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { IconButton } from '@mui/material';
-import { FaTimes } from 'react-icons/fa';
-import '../styles/globals.css';
-import { AppProvider } from '@context/AppContext/AppProvider';
 import { Topbar } from '@components/topbar';
 import NavBar from "@components/ui/NavBar/NavBar";
+import '../styles/globals.css';
 
 const theme = createTheme({
   palette: {
@@ -21,7 +17,6 @@ const theme = createTheme({
 
 const MyApp = ({ Component, pageProps }) => {
   const [queryClient] = useState(() => new QueryClient());
-  const notistackRef = useRef();
 
   return (
     <AppProvider>
