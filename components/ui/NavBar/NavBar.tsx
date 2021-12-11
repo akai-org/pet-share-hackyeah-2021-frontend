@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, {FunctionComponent, SyntheticEvent, useState} from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { MdAddCircle, MdHomeFilled, MdOutlineMessage, MdOutlineToys } from 'react-icons/md';
 import { GoOrganization } from 'react-icons/go';
@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { useAppContext } from '@context/AppContext';
 
 const StyledBottomNavigation = styled(BottomNavigation)`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
 `;
@@ -24,7 +24,7 @@ const NavBar: FunctionComponent = () => {
     <StyledBottomNavigation
       showLabels
       value={value}
-      onChange={(event: Event, newValue: string) => {
+      onChange={(event: SyntheticEvent<any>, newValue: string) => {
         router.push(newValue);
         setValue(newValue);
       }}

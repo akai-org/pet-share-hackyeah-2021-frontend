@@ -1,13 +1,14 @@
-import { FunctionComponent, useState } from 'react';
+import {FunctionComponent, useState} from 'react';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { MdFavoriteBorder, MdOutlineSettings, MdSearch } from 'react-icons/md';
-import { IconButton, TextField } from '@mui/material';
+import {MdFavoriteBorder, MdOutlineSettings, MdSearch} from 'react-icons/md';
+import {IconButton, TextField} from '@mui/material';
+import Link from 'next/link';
 // @ts-ignore
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import { useAppContext } from '@context/AppContext';
+import {useRouter} from 'next/router';
+import {useAppContext} from '@context/AppContext';
 
 const ToolbarContainer = styled(Toolbar)`
   display: flex;
@@ -15,11 +16,6 @@ const ToolbarContainer = styled(Toolbar)`
   justify-content: space-between;
 `;
 
-const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
 
 const StyleBox = styled(Box)`
   flex-grow: 1;
@@ -27,16 +23,34 @@ const StyleBox = styled(Box)`
   top: 0;
   left: 0;
   width: 100%;
-  height: min-content;
   background-color: white;
 `;
 
+const Logo = styled.img`
+  width: 50px;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  right: calc(50% - 25px);
+`
+
+const Avatar = styled.img`
+  width: 40px;
+  height: 40px;
+  border: 3px solid black;
+  border-radius: 30px;
+  :hover{
+    cursor: pointer;
+  }
+`
+
 const StyleTextField = styled(TextField)`
   width: 80%;
+  margin: 0 10% 0 10%;
 `;
 
 export const Topbar: FunctionComponent = () => {
-  const { user, fetchUser } = useAppContext();
+  const {user, fetchUser} = useAppContext();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
 
@@ -56,30 +70,30 @@ export const Topbar: FunctionComponent = () => {
               router.push('/user/settings');
             }}
           >
-            <MdOutlineSettings size={30} color="var(--secondary)" />
+            <MdOutlineSettings size={30} color="var(--secondary)"/>
           </IconButton>
           <IconButton
             onClick={() => {
               setSearch(!isSearch);
             }}
           >
-            <MdSearch size={30} color="var(--secondary)" />
+            <MdSearch size={30} color="var(--secondary)"/>
           </IconButton>
         </div>
-        <SearchContainer>
-          {isSearch && <StyleTextField id="standard-basic" label="Search" variant="standard" />}
-        </SearchContainer>
+        <Logo src="/resources/favicon.png"/>
         {user != null ? (
-          <p>Logged</p>
+          <Link href="/user/settings">
+            <Avatar src="/resources/schronisko.jpg"/>
+          </Link>
         ) : (
-          <Button variant="outlined" color="secondary" onClick={() => fetchUser('dummyUser', '123')}>
+          <Button variant="outlined" color="secondary" onClick={() => {
+            fetchUser('dummyUser', '123')
+          }}>
             Login
           </Button>
         )}
-        {/* <Button variant="outlined" color="secondary" onClick={() => fetchUser('dummyUser', '123')}>
-          Login
-        </Button> */}
       </ToolbarContainer>
+      {isSearch && <StyleTextField id="standard-basic" label="Search" variant="standard"/>}
     </StyleBox>
   );
 };
