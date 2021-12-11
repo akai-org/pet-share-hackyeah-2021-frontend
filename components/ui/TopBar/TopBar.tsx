@@ -25,8 +25,10 @@ const StyleBox = styled(Box)`
   flex-grow: 1;
   position: sticky;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: min-content;
   background-color: white;
-  box-shadow: 0 4px 4px 2px #e3e3e3;
 `
 
 const StyleTextField = styled(TextField)`
@@ -61,7 +63,7 @@ export const Topbar: FunctionComponent = () => {
         <SearchContainer>
           {isSearch && <StyleTextField id="standard-basic" label="Search" variant="standard"/>}
         </SearchContainer>
-        <Button variant="outlined" color="primary" onClick={() => {
+        <Button variant="outlined" color="secondary" onClick={() => {
           router.push('/login')
         }}>
           Login

@@ -1,40 +1,60 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
-  },
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "airbnb",
-    "prettier",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@next/next/recommended"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
     },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["react", "jsx-a11y"],
-  "rules": {
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "object-curly-newline": "off",
-    "import/prefer-default-export": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-    "react/function-component-definition": "off"
-  },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["."]
-      }
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "airbnb",
+        "airbnb-base",
+        "prettier",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:@next/next/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "jsx-a11y"
+    ],
+    "rules": {
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "object-curly-newline": "off",
+        "import/prefer-default-export": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-filename-extension": [
+            2,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
+        "react/function-component-definition": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": [
+                    "."
+                ]
+            }
+        }
     }
-  }
 }

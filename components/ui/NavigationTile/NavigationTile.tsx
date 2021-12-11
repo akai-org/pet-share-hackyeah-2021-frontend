@@ -6,24 +6,20 @@ import Link from 'next/link'
 
 const StyleButton = styled(Button)`
   padding: 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
   font-size: 1.25em;
-  font-weight: bold;
-  width: 16em;
-  color: #000000;
-  box-shadow: 0 0 4px 4px #ccc;
-  border-radius: 6px;
+  font-weight: normal;
+  color: var(--secondary);
+  :hover{
+    font-weight: bold;
+  }
 `
 
 interface MainButtonProps extends ButtonProps {
+  href: string
 }
 
-const NavigationTile: FunctionComponent<MainButtonProps> = ({children}) => (
-  <Link href="/">
+const NavigationTile: FunctionComponent<MainButtonProps> = ({href, children}) => (
+  <Link href={href}>
     <StyleButton>
       {children}
     </StyleButton>
