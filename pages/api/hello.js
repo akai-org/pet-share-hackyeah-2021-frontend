@@ -3,9 +3,13 @@ import { prisma } from 'db';
 
 export default nc()
   .get(async (req, res) => {
+    const result = await prisma.user.findUnique({
+      where: { id: 1 },
+      select: { id: true, email: true, username: true, firstname: true, lastname: true },
+    });
     const { text } = req.body;
     const { zUrla } = req.query;
-    res.json({ some: 'ok' });
+    res.json(result);
   })
   .post(async (req, res) => {
     const { text } = req.body;
