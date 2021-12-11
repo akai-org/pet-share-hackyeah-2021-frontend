@@ -29,7 +29,7 @@ const NavBar: FunctionComponent = () => {
         <BottomNavigationAction label="Organizations" icon={<GoOrganization size="30"/>} value="/market/organizations"/>
         <BottomNavigationAction showLabel={false} icon={<MdAddCircle size="40" color="var(--secondary)"/>} value="/user/create"/>
         <BottomNavigationAction label="Items" icon={<MdOutlineToys size="30"/>} value="/market/browse"/>
-        <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30"/>} value="/user/organizations"/>
+        <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30"/>} value="/market/organizations"/>
       </NavBox>
   )
 }
