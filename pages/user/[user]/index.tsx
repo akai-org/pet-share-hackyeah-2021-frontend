@@ -4,17 +4,19 @@ import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 import { useSession } from 'next-auth/react';
 import { useAppContext } from '@context/AppContext';
 import { User as UserData } from '@data/user';
+import { useRouter } from 'next/router';
 
 const User: NextPage = () => {
   const { data: session } = useSession();
-  const { user } = useAppContext();
+  const router = useRouter();
+  const { user, fetchUser, updateUser } = useAppContext();
 
   let dummyUser: UserData | null = null;
-  if (session?.user) {
-    if (session.user.name === user?.name) {
-      dummyUser = user;
+  if (router.query.user) {
+    if (router.query.user === session?.user?.name) {
+      dummyUser = user ?? updateUser(session?.user?.name);
     } else {
-      dummyUser = new UserData(`${session.user.name}`, `${session.user.email}`, `${session.user.image}`, []);
+      dummyUser = fetchUser(router.query.user, '123');
     }
   }
 
