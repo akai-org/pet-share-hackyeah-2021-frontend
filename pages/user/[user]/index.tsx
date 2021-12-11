@@ -14,7 +14,8 @@ const User: NextPage = () => {
   let dummyUser: UserData | null = null;
   if (router.query.user) {
     if (router.query.user === session?.user?.name) {
-      dummyUser = user ?? updateUser(session?.user?.name);
+      if (user == null) updateUser(session?.user?.name, '123');
+      dummyUser = user;
     } else {
       dummyUser = fetchUser(router.query.user, '123');
     }
