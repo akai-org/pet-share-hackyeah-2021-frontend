@@ -3,31 +3,41 @@ import Box from '@mui/material/Box';
 // @ts-ignore
 import styled from 'styled-components';
 import Link from 'next/link';
+import {Typography} from '@mui/material';
 
 type Props = {
-  user: { username: string; address: string };
+  user: { username: string; address: string, imageUrl: string };
 };
 
 const StyledBox = styled(Box)`
-  padding: 1.5em 2em 1em;
-  display: inline-flex;
+  img{
+    width: 80vw;
+    height: 80vw;
+    padding: 20px;
+  }
+  h5{
+    font-weight: bold;
+    color: var(--secondary);
+    text-decoration: underline;
+  }
+  display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background: #bababa;
-  min-height: 10em;
-  box-shadow: 0 0 4px 4px #ccc;
-  border-radius: 6px;
+  box-shadow: 0 2px 6px -1px rgba(0,0,0,0.2),0px 1px 6px 0px rgba(0,0,0,0.14),0px 1px 6px 0px rgba(0,0,0,0.12);
+  border-radius: 20px;
+  cursor: pointer;
 `;
 
 export const Organisation: FunctionComponent<Props> = ({ user }) => {
-  const { username, address } = user;
+  const { username, address, imageUrl} = user;
 
   return (
     <Link passHref href={`/user/${username}`}>
       <StyledBox>
-        <h1>{username}</h1>
-        <h2>{address}</h2>
+        <img src={imageUrl} alt="Organization logo"/>
+        <Typography variant="h5">{username}</Typography>
+        <Typography variant="h6">{address}</Typography>
       </StyledBox>
     </Link>
   );

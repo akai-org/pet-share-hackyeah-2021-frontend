@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { useAppContext } from '@context/AppContext';
 
 const StyledBottomNavigation = styled(BottomNavigation)`
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100%;
 `;

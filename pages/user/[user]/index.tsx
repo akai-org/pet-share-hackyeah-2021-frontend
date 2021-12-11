@@ -1,7 +1,7 @@
 import { Box, Container, Rating } from '@mui/material';
 import type { NextPage } from 'next';
 import { User as UserData } from '@data/user';
-import { ItemCard } from '@components/ui/ItemCard';
+import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 import { Item } from '@data/item';
 
 const User: NextPage = () => {
