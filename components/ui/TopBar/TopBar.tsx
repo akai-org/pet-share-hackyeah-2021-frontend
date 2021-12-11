@@ -2,9 +2,10 @@ import {FunctionComponent, useState} from 'react';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import {MdFavoriteBorder, MdOutlineSettings, MdSearch} from "react-icons/md";
+import {MdFavoriteBorder, MdOutlineSettings, MdSearch} from 'react-icons/md';
 import {IconButton, TextField} from '@mui/material';
-import styled from "styled-components";
+// @ts-ignore
+import styled from 'styled-components';
 import {useRouter} from 'next/router';
 
 
@@ -25,7 +26,11 @@ const StyleBox = styled(Box)`
   position: sticky;
   top: 0;
   background-color: white;
-  box-shadow: 0px 4px 4px 2px #e3e3e3;
+  box-shadow: 0 4px 4px 2px #e3e3e3;
+`
+
+const StyleTextField = styled(TextField)`
+  width: 80%;
 `
 
 export const Topbar: FunctionComponent = () => {
@@ -38,12 +43,12 @@ export const Topbar: FunctionComponent = () => {
       <ToolbarContainer color="regular">
         <div>
           <IconButton onClick={() => {
-            router.push("/user/favorites")
+            router.push('/user/favorites')
           }}>
             <MdFavoriteBorder size={30} color="var(--secondary)"/>
           </IconButton>
           <IconButton onClick={() => {
-            router.push("/user/settings")
+            router.push('/user/settings')
           }}>
             <MdOutlineSettings size={30} color="var(--secondary)"/>
           </IconButton>
@@ -54,10 +59,10 @@ export const Topbar: FunctionComponent = () => {
           </IconButton>
         </div>
         <SearchContainer>
-          {isSearch && <TextField id="standard-basic" label="Search" variant="standard" sx="width: 80%;"/>}
+          {isSearch && <StyleTextField id="standard-basic" label="Search" variant="standard"/>}
         </SearchContainer>
         <Button variant="outlined" color="primary" onClick={() => {
-          router.push("/login")
+          router.push('/login')
         }}>
           Login
         </Button>
