@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         display: 'inline-flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        alignItems: 'space-around',
+        alignItems: 'center',
       }}
     >
       <h1 style={{ textAlign: 'center' }}>PetApp</h1>
