@@ -1,9 +1,8 @@
 import { Box, Container, Rating } from '@mui/material';
 import type { NextPage } from 'next';
 import { User as UserData } from '@data/user';
-import Image from 'next/image';
-import { Item } from '@components/ui/Item';
-import { Item as ItemData } from '@data/item';
+import { ItemCard } from '@components/ui/ItemCard';
+import { Item } from '@data/item';
 
 const User: NextPage = () => {
   const dummyUser = new UserData(
@@ -12,15 +11,15 @@ const User: NextPage = () => {
     4,
     'Localization',
     [
-      new ItemData('test'),
-      new ItemData('test2'),
-      new ItemData('test3'),
-      new ItemData('test4'),
-      new ItemData('test5'),
-      new ItemData('test6'),
-      new ItemData('test7'),
-      new ItemData('test8'),
-      new ItemData('test9'),
+      new Item('test'),
+      new Item('test2'),
+      new Item('test3'),
+      new Item('test4'),
+      new Item('test5'),
+      new Item('test6'),
+      new Item('test7'),
+      new Item('test8'),
+      new Item('test9'),
     ]
   );
 
@@ -59,7 +58,7 @@ const User: NextPage = () => {
         }}
       >
         {dummyUser.items.map((item) => (
-          <Item name={item.name} />
+          <ItemCard key="itemcard" name={item.name} itemId={item.name} />
         ))}
       </Box>
     </Container>
