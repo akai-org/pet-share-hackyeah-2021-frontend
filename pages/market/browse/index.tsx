@@ -1,7 +1,7 @@
-import { ItemCard } from '@components/ui/ItemCard';
 import { Item } from '@data/item';
 import { Box } from '@mui/material';
 import type { NextPage } from 'next';
+import {ItemCard} from '@components/ui/ItemCard/ItemCard';
 
 const Browse: NextPage = () => {
   const fetchedItems = [
