@@ -12,7 +12,10 @@ export default nc()
     res.json(result);
   })
   .post(async (req, res) => {
-    const { text } = req.body;
+    const { content } = req.body;
+    const { fromUrl } = req.query;
+    console.log(`content`, content);
+    console.log(`fromUrl`, fromUrl);
     res.status(201).json({ ok: 'ok' });
   })
   .put(async (req, res) => {
