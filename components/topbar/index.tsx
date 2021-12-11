@@ -20,19 +20,21 @@ const SearchContainer = styled.div`
   flex-direction: column;
 `
 
+const StyleBox = styled(Box)`
+  flex-grow: 1;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  box-shadow: 0px 4px 4px 2px #e3e3e3;
+`
+
 export const Topbar: FunctionComponent = () => {
 
   const [isSearch, setSearch] = useState(false)
   const router = useRouter();
 
   return (
-    <Box sx={{
-      flexGrow: 1,
-      position: "sticky",
-      top: 0,
-      backgroundColor: "white",
-      boxShadow: "0px 4px 4px 2px #e3e3e3 "
-    }}>
+    <StyleBox>
       <ToolbarContainer color="regular">
         <div>
           <IconButton onClick={() => {
@@ -60,6 +62,6 @@ export const Topbar: FunctionComponent = () => {
           Login
         </Button>
       </ToolbarContainer>
-    </Box>
+    </StyleBox>
   );
 };
