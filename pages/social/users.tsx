@@ -99,7 +99,7 @@ const Users: NextPage = () => {
       />
       {organisations.map(
         (org) =>
-          org.address.includes(location) && (
+          (org.address.includes(location) || location === 'Get Location') && (
             <StyledBox key={org.id}>
               <Organisation user={org} />
             </StyledBox>
