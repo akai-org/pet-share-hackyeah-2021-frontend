@@ -1,8 +1,8 @@
 import { Box, Container, Rating } from '@mui/material';
 import type { NextPage } from 'next';
-import { ItemCard } from '@components/ui/ItemCard';
 import { useRouter } from 'next/router';
 import { useAppContext } from '@context/AppContext';
+import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 
 const User: NextPage = () => {
   const router = useRouter();
@@ -53,7 +53,7 @@ const User: NextPage = () => {
           }}
         >
           {dummyUser.items.map((item) => (
-            <ItemCard key="itemcard" name={item.name} itemId={item.name} />
+            <ItemCard name={item.name} itemId={item.name} />
           ))}
         </Box>
       </Container>
