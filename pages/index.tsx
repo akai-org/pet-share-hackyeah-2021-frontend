@@ -1,8 +1,11 @@
+import { useAppContext } from '@context/AppContext';
 import { Container, Button } from '@mui/material';
 import type { NextPage } from 'next';
 import Router from 'next/router';
 
 const Home: NextPage = () => {
+  const { user } = useAppContext();
+
   function UsersPage(): void {
     Router.push('/social/users');
   }
@@ -14,24 +17,25 @@ const Home: NextPage = () => {
   return (
     <Container
       sx={{
-        height: '70vh',
-        display: 'inline-flex',
+        height: '80vh',
+        display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        alignItems: 'space-around',
+        alignItems: 'center',
       }}
     >
       <h1 style={{ textAlign: 'center' }}>PetApp</h1>
       <Button
         sx={{
           padding: '1.5em 2em 3em',
-          display: 'inline-flex',
+          display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
           background: '#BABABA',
           fontSize: '1.25em',
           fontWeight: 'bold',
+          width: '16em',
           color: '#000',
           boxShadow: 4,
           borderRadius: 4,
@@ -43,13 +47,14 @@ const Home: NextPage = () => {
       <Button
         sx={{
           padding: '1.5em 2em 3em',
-          display: 'inline-flex',
+          display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
           background: '#BABABA',
           fontSize: '1.25em',
           fontWeight: 'bold',
+          width: '16em',
           color: '#000',
           boxShadow: 4,
           borderRadius: 4,
