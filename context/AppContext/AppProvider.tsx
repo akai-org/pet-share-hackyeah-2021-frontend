@@ -24,14 +24,18 @@ export const AppProvider: FunctionComponent = ({ children }) => {
         new Item('test9'),
       ]
     );
-    setUser(fetchedUser);
     return fetchedUser;
+  }
+
+  function storeUser(username: string, password: string): void {
+    setUser(getUser(username, password));
   }
 
   const value = React.useMemo(
     () => ({
       user,
       fetchUser: getUser,
+      updateUser: storeUser,
     }),
     [user]
   );

@@ -1,13 +1,24 @@
 import { Box, Container, Rating } from '@mui/material';
 import type { NextPage } from 'next';
 import { ItemCard } from '@components/ui/ItemCard';
+import { useRouter } from 'next/router';
 import { useAppContext } from '@context/AppContext';
 
 const User: NextPage = () => {
-  const { user } = useAppContext();
+  const router = useRouter();
+  const { user, fetchUser } = useAppContext();
+
+  let dummyUser = null;
+  if (router.query.user) {
+    if (router.query.user === user?.username) {
+      dummyUser = user;
+    } else {
+      dummyUser = fetchUser(router.query.user, '123');
+    }
+  }
 
   return (
-    user && (
+    dummyUser && (
       <Container>
         <Box
           sx={{
@@ -19,8 +30,8 @@ const User: NextPage = () => {
             background: 'gray ',
           }}
         >
-          <img src={user.profilePicture} alt="sry" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-          <h1 style={{ margin: '0 0 0 1em' }}>{user.username}</h1>
+          <img src={dummyUser.profilePicture} alt="sry" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+          <h1 style={{ margin: '0 0 0 1em' }}>{dummyUser.username}</h1>
         </Box>
         <Box
           sx={{
@@ -30,10 +41,10 @@ const User: NextPage = () => {
           }}
         >
           <h3 style={{ margin: '0 0.5em 0 0' }}>Ocena:</h3>
-          <Rating name="read-only" value={user.rating} readOnly />
+          <Rating name="read-only" value={dummyUser.rating} readOnly />
         </Box>
         <Box>
-          <h3>Lokalizacja: {user.localization}</h3>
+          <h3>Lokalizacja: {dummyUser.localization}</h3>
         </Box>
         <Box
           sx={{
@@ -41,8 +52,8 @@ const User: NextPage = () => {
             gridTemplateColumns: '1fr 1fr',
           }}
         >
-          {user.items.map((item) => (
-            <ItemCard name={item.name} itemId={item.name} />
+          {dummyUser.items.map((item) => (
+            <ItemCard key="itemcard" name={item.name} itemId={item.name} />
           ))}
         </Box>
       </Container>
