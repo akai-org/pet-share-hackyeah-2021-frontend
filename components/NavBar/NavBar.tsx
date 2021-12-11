@@ -22,7 +22,7 @@ const NavBar: FunctionComponent = () => {
         <BottomNavigationAction
           label="Organizations"
           icon={<GoOrganization size="30" />}
-          value="/market/organizations"
+          value="/social/users"
         />
         <BottomNavigationAction
           showLabel={false}
