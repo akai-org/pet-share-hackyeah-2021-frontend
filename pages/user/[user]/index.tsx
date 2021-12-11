@@ -1,15 +1,15 @@
-import { Box, Container, Rating } from '@mui/material';
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { ItemCard } from '@components/ui/ItemCard/ItemCard';
-import { useSession } from 'next-auth/react';
+import {Box, Container, Rating, Typography} from '@mui/material';
+import type {NextPage} from 'next';
+import {useRouter} from 'next/router';
+import {ItemCard} from '@components/ui/ItemCard/ItemCard';
+import {useSession} from 'next-auth/react';
 
 const User: NextPage = () => {
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   const router = useRouter();
 
   if (!session) {
-    return <div>zalogujs sie</div>;
+    return <Typography variant="h1">Zaloguj się</Typography>;
   }
 
   return (
