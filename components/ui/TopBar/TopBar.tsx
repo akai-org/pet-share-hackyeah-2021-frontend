@@ -63,7 +63,7 @@ export const Topbar: FunctionComponent = () => {
         <SearchContainer>
           {isSearch && <StyleTextField id="standard-basic" label="Search" variant="standard"/>}
         </SearchContainer>
-        <Button variant="outlined" color="primary" onClick={() => {
+        <Button variant="outlined" color="secondary" onClick={() => {
           router.push('/login')
         }}>
           Login

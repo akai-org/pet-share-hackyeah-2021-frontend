@@ -8,13 +8,16 @@ import {FunctionComponent, PropsWithChildren} from 'react';
 import styled from 'styled-components';
 
 const theme = createTheme({
+  typography: {
+    fontFamily:  'Raleway, Arial',
+  },
   palette: {
     mode: 'light',
     primary: {
-      main: '#e64a19'
+      main: '#D2B046'
     },
     secondary: {
-      main: '#ffb300'
+      main: '#009340'
     }
   },
 });
