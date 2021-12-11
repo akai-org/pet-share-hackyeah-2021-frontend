@@ -8,6 +8,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { useSession, signIn } from 'next-auth/react';
+import { useAppContext } from '@context/AppContext';
 
 const ToolbarContainer = styled(Toolbar)`
   display: flex;
@@ -49,6 +50,7 @@ const StyleTextField = styled(TextField)`
 
 export const Topbar: FunctionComponent = () => {
   const { data: session } = useSession();
+  const { updateUser } = useAppContext();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
 
@@ -80,7 +82,7 @@ export const Topbar: FunctionComponent = () => {
         </div>
         <Logo src="/resources/favicon.png" />
         {session ? (
-          <Link href={`/user/${session.user.username}`}>
+          <Link passHref href={`/user/${session.user?.name}`}>
             <Avatar src="/resources/schronisko.jpg" />
           </Link>
         ) : (
@@ -89,6 +91,7 @@ export const Topbar: FunctionComponent = () => {
             color="secondary"
             onClick={() => {
               signIn('google');
+              updateUser(`${session?.user?.name}`, '123');
             }}
           >
             Login
