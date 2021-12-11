@@ -1,4 +1,4 @@
-import React, {FunctionComponent, SyntheticEvent, useState} from 'react';
+import React, { FunctionComponent, SyntheticEvent, useState } from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { MdAddCircle, MdHomeFilled, MdOutlineMessage, MdOutlineToys } from 'react-icons/md';
 import { GoOrganization } from 'react-icons/go';
@@ -19,6 +19,7 @@ const NavBar: FunctionComponent = () => {
 
   const { user } = useAppContext();
   const addItemPath = user != null ? `/user/${user.username}/create` : '/login';
+  const messegaesPath = user != null ? `/user/${user.username}/messages` : '/login';
 
   return (
     <StyledBottomNavigation
@@ -37,7 +38,7 @@ const NavBar: FunctionComponent = () => {
         value={addItemPath}
       />
       <BottomNavigationAction label="Items" icon={<MdOutlineToys size="30" />} value="/market/browse" />
-      <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value="/social/messages" />
+      <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value={messegaesPath} />
     </StyledBottomNavigation>
   );
 };
