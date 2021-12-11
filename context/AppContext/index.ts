@@ -1,15 +1,15 @@
+import { User } from '@data/user';
 import { createContext, useContext } from 'react';
 
 interface IAppContext {
-    user: any;
-    fetchUser: () => void;
+  user: User | null;
+  fetchUser: (username: string, password: string) => User | null;
 }
 
 export const defaultState = {
-    user: false,
-    fetchUser: () => {}
+  user: null,
+  fetchUser: () => null,
 };
-
 
 const AppContext = createContext<IAppContext>(defaultState);
 
