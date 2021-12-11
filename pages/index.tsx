@@ -1,9 +1,11 @@
+import { useAppContext } from '@context/AppContext';
 import { Container, Button } from '@mui/material';
 import type { NextPage } from 'next';
 import Router from 'next/router';
 
 const Home: NextPage = () => {
   const { user } = useAppContext();
+
   function UsersPage(): void {
     Router.push('/social/users');
   }
@@ -11,7 +13,7 @@ const Home: NextPage = () => {
   function ListPage(): void {
     Router.push('/market/browse');
   }
-  
+
   return (
     <Container
       sx={{
@@ -63,4 +65,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home
+export default Home;
