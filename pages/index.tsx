@@ -17,18 +17,28 @@ const StyledContainer = styled(Container)`
   justify-content: space-around;
 `
 
+const NavigationContainer = styled.div`
+  flex-direction: column;
+  display: flex;
+`
+
 const Home: NextPage = () =>
 // const {user} = useAppContext();
 
     (
       <StyledContainer>
         <Logo src="/resources/logo.png" alt="PetApp"/>
-        <NavigationTile href="/social/users">
-          Organizations
-        </NavigationTile>
-        <NavigationTile href="/market/browse">
-          Available Items
-        </NavigationTile>
+        <NavigationContainer>
+          <NavigationTile href="/social/users">
+            Organizations
+          </NavigationTile>
+          <NavigationTile href="/market/browse">
+            Available Items
+          </NavigationTile>
+          <NavigationTile href="/about">
+            About Us
+          </NavigationTile>
+        </NavigationContainer>
       </StyledContainer>
     )
 ;

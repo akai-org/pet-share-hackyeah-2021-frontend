@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import Link from 'next/link'
 
 const StyleButton = styled(Button)`
-  padding: 1.5em;
+  padding: 1em;
+  border-radius: 10px;
   font-size: 1.25em;
   font-weight: normal;
   color: var(--secondary);
