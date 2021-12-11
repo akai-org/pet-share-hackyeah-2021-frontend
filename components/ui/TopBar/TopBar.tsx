@@ -5,10 +5,9 @@ import Button from '@mui/material/Button';
 import { MdFavoriteBorder, MdOutlineSettings, MdSearch } from 'react-icons/md';
 import { IconButton, TextField } from '@mui/material';
 import Link from 'next/link';
-// @ts-ignore
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import { useAppContext } from '@context/AppContext';
+import { useSession, signIn } from 'next-auth/react';
 
 const ToolbarContainer = styled(Toolbar)`
   display: flex;
@@ -49,7 +48,7 @@ const StyleTextField = styled(TextField)`
 `;
 
 export const Topbar: FunctionComponent = () => {
-  const { user, updateUser } = useAppContext();
+  const { data: session } = useSession();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
 
@@ -80,8 +79,8 @@ export const Topbar: FunctionComponent = () => {
           </IconButton>
         </div>
         <Logo src="/resources/favicon.png" />
-        {user != null ? (
-          <Link href={`/user/${user.username}`}>
+        {session ? (
+          <Link href={`/user/${session.user.username}`}>
             <Avatar src="/resources/schronisko.jpg" />
           </Link>
         ) : (
@@ -89,7 +88,7 @@ export const Topbar: FunctionComponent = () => {
             variant="outlined"
             color="secondary"
             onClick={() => {
-              updateUser('dummyUser', '123');
+              signIn('google');
             }}
           >
             Login

@@ -1,46 +1,52 @@
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {Topbar} from '@components/ui/TopBar/TopBar';
+import { useState } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Topbar } from '@components/ui/TopBar/TopBar';
 import NavBar from '@components/ui/NavBar/NavBar';
-import '../styles/globals.css';
-import {AppProvider} from '@context/AppContext/AppProvider';
-import {FunctionComponent, PropsWithChildren} from 'react';
-// @ts-ignore
+import { SnackbarProvider } from 'notistack';
+import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
 import styled from 'styled-components';
+import '../styles/globals.css';
 
 const theme = createTheme({
   typography: {
-    fontFamily:  'Raleway, Arial',
+    fontFamily: 'Raleway, Arial',
   },
   palette: {
     mode: 'light',
     primary: {
-      main: '#D2B046'
+      main: '#D2B046',
     },
     secondary: {
-      main: '#009340'
-    }
+      main: '#009340',
+    },
   },
 });
 
 const StyledComponent = styled.div`
   height: calc(100vh - 112px);
-`
+`;
 
-interface MyAppProps {
-  Component: FunctionComponent,
-  pageProps: PropsWithChildren<any>
-}
+const MyApp = ({ Component, pageProps }) => {
+  const [queryClient] = useState(() => new QueryClient());
 
-const MyApp: FunctionComponent<MyAppProps> = ({Component, pageProps}) => (
-  <AppProvider>
-    <ThemeProvider theme={theme}>
-      <Topbar/>
-      <StyledComponent>
-        <Component {...pageProps} />
-      </StyledComponent>
-      <NavBar/>
-    </ThemeProvider>
-  </AppProvider>
-);
+  return (
+    <SessionProvider session={pageProps.session}>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider>
+          <QueryClientProvider client={queryClient}>
+            <Hydrate state={pageProps.dehydratedState}>
+              <Topbar />
+              <StyledComponent>
+                <Component {...pageProps} />
+              </StyledComponent>
+              <NavBar />
+            </Hydrate>
+          </QueryClientProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </SessionProvider>
+  );
+};
 
 export default MyApp;
