@@ -14,8 +14,8 @@ const Home: NextPage = () => {
   return (
     <Container
       sx={{
-        height: '70vh',
-        display: 'inline-flex',
+        height: '80vh',
+        display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignItems: 'center',
