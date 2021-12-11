@@ -2,10 +2,10 @@ import React, { FunctionComponent, SyntheticEvent, useState } from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { MdAddCircle, MdHomeFilled, MdOutlineMessage, MdOutlineToys } from 'react-icons/md';
 import { GoOrganization } from 'react-icons/go';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 // @ts-ignore
 import styled from 'styled-components';
+import { useSession } from 'next-auth/react';
 
 const StyledBottomNavigation = styled(BottomNavigation)`
   position: fixed;
@@ -17,8 +17,8 @@ const NavBar: FunctionComponent = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [value, setValue] = useState(router.pathname);
-  const addItemPath = session ? `/user/${session.user.username}/create` : '/login';
-  const messagesPath = session ? `/user/${session.user.username}/messages` : '/login';
+  const addItemPath = session ? `/user/${session.user?.name}/create` : '/login';
+  const messagesPath = session ? `/user/${session.user?.name}/messages` : '/login';
 
   return (
     <StyledBottomNavigation
