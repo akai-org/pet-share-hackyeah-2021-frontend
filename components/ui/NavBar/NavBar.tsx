@@ -19,7 +19,7 @@ const NavBar: FunctionComponent = () => {
 
   const { user } = useAppContext();
   const addItemPath = user != null ? `/user/${user.username}/create` : '/login';
-  const messegaesPath = user != null ? `/user/${user.username}/messages` : '/login';
+  const messagesPath = user != null ? `/user/${user.username}/messages` : '/login';
 
   return (
     <StyledBottomNavigation
@@ -38,7 +38,7 @@ const NavBar: FunctionComponent = () => {
         value={addItemPath}
       />
       <BottomNavigationAction label="Items" icon={<MdOutlineToys size="30" />} value="/market/browse" />
-      <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value={messegaesPath} />
+      <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value={messagesPath} />
     </StyledBottomNavigation>
   );
 };
