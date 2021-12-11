@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 const NavBar: FunctionComponent = () => {
   const router = useRouter();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(router.pathname);
 
   return (
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
@@ -30,7 +30,7 @@ const NavBar: FunctionComponent = () => {
           value="/user/create"
         />
         <BottomNavigationAction label="Items" icon={<MdOutlineToys size="30" />} value="/market/browse" />
-        <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value="/market/organizations" />
+        <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value="/social/messages" />
       </BottomNavigation>
     </Paper>
   );
