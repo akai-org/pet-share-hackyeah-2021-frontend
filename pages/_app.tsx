@@ -3,8 +3,9 @@ import {Topbar} from '@components/ui/TopBar/TopBar';
 import NavBar from '@components/ui/NavBar/NavBar';
 import '../styles/globals.css';
 import {AppProvider} from '@context/AppContext/AppProvider';
-import {Box} from '@mui/material';
 import {FunctionComponent, PropsWithChildren} from 'react';
+// @ts-ignore
+import styled from 'styled-components';
 
 const theme = createTheme({
   palette: {
@@ -18,6 +19,10 @@ const theme = createTheme({
   },
 });
 
+const StyledComponent = styled.div`
+  height: calc(100vh - 112px);
+`
+
 interface MyAppProps {
   Component: FunctionComponent,
   pageProps: PropsWithChildren<any>
@@ -27,8 +32,9 @@ const MyApp: FunctionComponent<MyAppProps> = ({Component, pageProps}) => (
   <AppProvider>
     <ThemeProvider theme={theme}>
       <Topbar/>
-      <Box/>
-      <Component {...pageProps} />
+      <StyledComponent>
+        <Component {...pageProps} />
+      </StyledComponent>
       <NavBar/>
     </ThemeProvider>
   </AppProvider>

@@ -20,10 +20,11 @@ const StyleButton = styled(Button)`
 `
 
 interface MainButtonProps extends ButtonProps {
+  href: string
 }
 
-const NavigationTile: FunctionComponent<MainButtonProps> = ({children}) => (
-  <Link href="/">
+const NavigationTile: FunctionComponent<MainButtonProps> = ({href, children}) => (
+  <Link href={href}>
     <StyleButton>
       {children}
     </StyleButton>

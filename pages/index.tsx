@@ -8,10 +8,10 @@ const Home: NextPage = () =>
   (
     <Container>
       <h1>PetApp</h1>
-      <NavigationTile>
+      <NavigationTile href="/social/users">
         Organizations
       </NavigationTile>
-      <NavigationTile>
+      <NavigationTile href="/market/browse">
         Available Items
       </NavigationTile>
     </Container>
