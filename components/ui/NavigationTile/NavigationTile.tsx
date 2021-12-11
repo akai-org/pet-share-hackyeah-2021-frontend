@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react'
 import {Button, ButtonProps} from '@mui/material';
 // @ts-ignore
 import styled from 'styled-components';
+import Link from 'next/link'
 
 const StyleButton = styled(Button)`
   padding: 1.5em;
@@ -22,9 +23,11 @@ interface MainButtonProps extends ButtonProps {
 }
 
 const NavigationTile: FunctionComponent<MainButtonProps> = ({children}) => (
-  <StyleButton>
-    {children}
-  </StyleButton>
+  <Link href="/">
+    <StyleButton>
+      {children}
+    </StyleButton>
+  </Link>
 )
 
 export default NavigationTile;
