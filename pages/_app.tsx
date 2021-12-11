@@ -49,7 +49,8 @@ const MyApp = ({ Component, pageProps }) => {
                 <Component {...pageProps} />
                 <NavBar/>
                 {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
-              </Hydrate>
+                <NavBar/>
+                </Hydrate>
             </QueryClientProvider>
           </SnackbarProvider>
         </ThemeProvider>
