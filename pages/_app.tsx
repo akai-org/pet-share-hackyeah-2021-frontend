@@ -6,7 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { IconButton } from '@mui/material';
+import { Container, IconButton } from '@mui/material';
 import { FaTimes } from 'react-icons/fa';
 import '../styles/globals.css';
 import { AppProvider } from '@context/AppContext/AppProvider';
