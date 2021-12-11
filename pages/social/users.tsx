@@ -20,7 +20,6 @@ const Users: NextPage = () => {
         alignItems: 'center',
       }}
     >
-      <Box sx={{ height: '50px' }} />
       {organisations.map((org) => (
         <Box sx={{ margin: '1.5em 0' }}>
           <Organisation user={org} />

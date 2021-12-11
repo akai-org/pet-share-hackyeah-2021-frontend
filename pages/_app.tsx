@@ -3,6 +3,7 @@ import { Topbar } from '@components/topbar';
 import NavBar from '@components/ui/NavBar/NavBar';
 import '../styles/globals.css';
 import { AppProvider } from '@context/AppContext/AppProvider';
+import { Box } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -15,6 +16,7 @@ const MyApp = ({ Component, pageProps }) => {
     <AppProvider>
       <ThemeProvider theme={theme}>
         <Topbar />
+        <Box sx={{ height: '50px' }} />
         <Component {...pageProps} />
         <NavBar />
       </ThemeProvider>
