@@ -28,13 +28,14 @@ const Home: NextPage = () => {
       <Button
         sx={{
           padding: '1.5em 2em 3em',
-          display: 'inline-flex',
+          display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
           background: '#BABABA',
           fontSize: '1.25em',
           fontWeight: 'bold',
+          width: '16em',
           color: '#000',
           boxShadow: 4,
           borderRadius: 4,
@@ -46,13 +47,14 @@ const Home: NextPage = () => {
       <Button
         sx={{
           padding: '1.5em 2em 3em',
-          display: 'inline-flex',
+          display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignItems: 'center',
           background: '#BABABA',
           fontSize: '1.25em',
           fontWeight: 'bold',
+          width: '16em',
           color: '#000',
           boxShadow: 4,
           borderRadius: 4,
