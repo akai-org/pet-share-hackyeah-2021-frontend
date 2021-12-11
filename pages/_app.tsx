@@ -5,6 +5,7 @@ import { SnackbarProvider } from 'notistack';
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Topbar } from '@components/topbar';
 import '../styles/globals.css';
 
 const theme = createTheme({
@@ -22,6 +23,7 @@ const MyApp = ({ Component, pageProps }) => {
         <SnackbarProvider>
           <QueryClientProvider client={queryClient}>
             <Hydrate state={pageProps.dehydratedState}>
+              <Topbar />
               <Component {...pageProps} />
             </Hydrate>
           </QueryClientProvider>
