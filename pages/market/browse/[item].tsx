@@ -1,45 +1,15 @@
-import { Button, Container } from '@mui/material';
-import { Box } from '@mui/system';
-import type { NextPage } from 'next';
+import {Container, Typography} from '@mui/material';
+import type {NextPage} from 'next';
+
+const item = {
+  imageUrl: '/resources/zabawka.jpg',
+  title: 'Zabawka dla psa'
+}
 
 const BrowseItemDetails: NextPage = () => (
   <Container>
-    <div
-      style={{
-        backgroundImage: 'url(https://cdn.frankerfacez.com/emoticon/262458/4)',
-        width: '100px',
-        height: '100px',
-      }}
-    >
-      <h5>01.01.2000</h5>
-    </div>
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        height: '100px',
-        width: '100px',
-        background: 'gray ',
-      }}
-    >
-      <img
-        src="https://data4.cupsell.pl/upload/generator/73795/640x420/5639065_print_1.png?resize=max_sizes&key=55f9a22768eed085006592c1174c0235"
-        alt="sry"
-        style={{ maxWidth: '100px', maxHeight: '100px' }}
-      />
-      <h1 style={{ margin: '0 0 0 1em' }}>Username</h1>
-    </Box>
-    <Box>
-      <h3>Wymienie/Sprzedam/Oddam</h3>
-    </Box>
-    <Box>
-      <h3>Lokalizacja:</h3>
-    </Box>
-    <Box>
-      <h4>Opis</h4>
-    </Box>
-    <Button>Napisz</Button>
+    <img src={item.imageUrl} alt="Item"/>
+    <Typography variant="h2">{item.title}</Typography>
   </Container>
 );
 

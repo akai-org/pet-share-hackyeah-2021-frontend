@@ -53,7 +53,7 @@ export const Topbar: FunctionComponent = () => {
   const { updateUser } = useAppContext();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
-
+  console.log(session);
   return (
     <StyleBox>
       <ToolbarContainer color="regular">
@@ -82,8 +82,8 @@ export const Topbar: FunctionComponent = () => {
         </div>
         <Logo src="/resources/favicon.png" />
         {session ? (
-          <Link passHref href={`/user/${session.user?.name}`}>
-            <Avatar src="/resources/schronisko.jpg" />
+          <Link href={`/user/${session.user?.email}`}>
+            <Avatar src={session.user?.image} />
           </Link>
         ) : (
           <Button
