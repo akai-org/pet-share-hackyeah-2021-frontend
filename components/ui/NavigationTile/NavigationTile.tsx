@@ -20,7 +20,7 @@ interface MainButtonProps extends ButtonProps {
 }
 
 const NavigationTile: FunctionComponent<MainButtonProps> = ({ href, children }) => (
-  <Link href={href}>
+  <Link href={href} passHref>
     <StyleButton>{children}</StyleButton>
   </Link>
 );

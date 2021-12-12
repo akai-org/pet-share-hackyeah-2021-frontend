@@ -2,7 +2,7 @@ import { FunctionComponent, useState } from 'react';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { MdFavoriteBorder, MdOutlineSettings, MdSearch } from 'react-icons/md';
+import { MdFavoriteBorder, MdSearch } from 'react-icons/md';
 import { IconButton, TextField } from '@mui/material';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -49,41 +49,39 @@ const StyleTextField = styled(TextField)`
 `;
 
 export const Topbar: FunctionComponent = () => {
-  const { data: session } = useSession();
+  const { data } = useSession();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
+
   return (
     <StyleBox>
       <ToolbarContainer color="regular">
         <div>
           <IconButton
             onClick={() => {
-              router.push('/user/favorites');
+              router.push('/favorites');
             }}
           >
             <MdFavoriteBorder size={30} color="var(--secondary)" />
           </IconButton>
           <IconButton
             onClick={() => {
-              router.push('/user/settings');
+              setSearch((v) => !v);
             }}
           >
-            <MdOutlineSettings size={30} color="var(--secondary)"/>
-          </IconButton>
-          <IconButton
-            onClick={() => {
-              setSearch(!isSearch);
-            }}
-          >
-            <MdSearch size={30} color="var(--secondary)"/>
+            <MdSearch size={30} color="var(--secondary)" />
           </IconButton>
         </div>
-        <Link href="/">
-          <Logo src="/resources/favicon.png"/>
+        <Link href="/" passHref>
+          <a>
+            <Logo src="/resources/favicon.png" />
+          </a>
         </Link>
-        {session ? (
-          <Link href={`/user/${session.user?.email}`}>
-            <Avatar src={session.user?.image} />
+        {data ? (
+          <Link href="/profile" passHref>
+            <a href="/profile">
+              <Avatar src={data.user.image} />
+            </a>
           </Link>
         ) : (
           <Button
