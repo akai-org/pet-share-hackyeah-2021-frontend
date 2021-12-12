@@ -1,7 +1,6 @@
 import { Container } from '@mui/material';
 import type { NextPage } from 'next';
 import NavigationTile from '@components/ui/NavigationTile/NavigationTile';
-// @ts-ignore
 import styled from 'styled-components';
 
 const Logo = styled.img`

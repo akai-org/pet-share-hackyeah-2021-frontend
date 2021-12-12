@@ -29,11 +29,7 @@ const NavBar: FunctionComponent = () => {
     >
       <BottomNavigationAction label="Home" icon={<MdHomeFilled size="30" />} value="/" />
       <BottomNavigationAction label="Organizations" icon={<GoOrganization size="30" />} value="/social/users" />
-      <BottomNavigationAction
-        showLabel={false}
-        icon={<MdAddCircle size="40" color="var(--secondary)" />}
-        value={addItemPath}
-      />
+      <BottomNavigationAction icon={<MdAddCircle size="40" color="var(--secondary)" />} value={addItemPath} />
       <BottomNavigationAction label="Items" icon={<MdOutlineToys size="30" />} value="/items/list" />
       <BottomNavigationAction label="Messages" icon={<MdOutlineMessage size="30" />} value="/messages" />
     </StyledBottomNavigation>
