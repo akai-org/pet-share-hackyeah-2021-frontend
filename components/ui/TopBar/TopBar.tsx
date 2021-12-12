@@ -80,7 +80,7 @@ export const Topbar: FunctionComponent = () => {
         {data ? (
           <Link href="/profile" passHref>
             <a href="/profile">
-              <Avatar src={data.user.image} />
+              <Avatar src={data.user.avatarUrl} />
             </a>
           </Link>
         ) : (
