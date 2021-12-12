@@ -51,7 +51,6 @@ export const Topbar: FunctionComponent = () => {
   const { data: session } = useSession();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
-  console.log(session);
   return (
     <StyleBox>
       <ToolbarContainer color="regular">

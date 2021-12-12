@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-  --primary: #D2B046;
+  --primary: rgb(210, 176, 70);
   --secondary: #009340;
 }
 
