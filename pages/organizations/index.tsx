@@ -1,9 +1,11 @@
-import { Box, Container, MenuItem, Select, SelectChangeEvent, Slider, Typography } from '@mui/material';
-import { Organisation } from '@components/Organisation/Organisation';
-import type { NextPage } from 'next';
+import {Box, Container, MenuItem, Select, SelectChangeEvent, Slider, Typography} from '@mui/material';
+import {Organisation} from '@components/Organisation/Organisation';
+import type {NextPage} from 'next';
 // @ts-ignore
 import styled from 'styled-components';
-import { useState } from 'react';
+import {useState} from 'react';
+import {useOrganizations} from 'apis';
+
 
 const StyledContainer = styled(Container)`
   padding-top: 30px;
@@ -27,47 +29,17 @@ const StyledBox = styled(Box)`
 `;
 
 const Users: NextPage = () => {
+  const {data: organisations, isLoading, error} = useOrganizations()
   const [location, setLocation] = useState('Get Location');
 
-  const organisations = [
-    { id: 1, username: 'Schronisko w Dobrej', address: 'Poznań, Belgijska 10', imageUrl: '/resources/schronisko.jpg' },
-    {
-      id: 2,
-      username: 'Schronisko Publiczne Poznan nr 3',
-      address: 'Poznań, Kórnicka 5',
-      imageUrl: '/resources/schronisko2.jpg',
-    },
-    {
-      id: 3,
-      username: 'Schronisko dla bezdomnych zwierząt',
-      address: 'Poznań, Brytyjska 4',
-      imageUrl: '/resources/schronisko3.jpg',
-    },
-    {
-      id: 4,
-      username: 'Schronisko na Garbarch',
-      address: 'Warszawa, Ulica 420/69',
-      imageUrl: '/resources/schronisko4.jpg',
-    },
-    {
-      id: 5,
-      username: 'Schronisko Warszawa #1',
-      address: 'Warszawa, Ulica 420/69',
-      imageUrl: '/resources/schronisko4.jpg',
-    },
-    {
-      id: 6,
-      username: 'Schronisko Warszawa #2',
-      address: 'Warszawa, Ulica 420/69',
-      imageUrl: '/resources/schronisko4.jpg',
-    },
-    {
-      id: 7,
-      username: 'Schronisko Warszawa #3',
-      address: 'Warszawa, Dom 2137',
-      imageUrl: '/resources/schronisko4.jpg',
-    },
-  ];
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error</div>;
+  }
 
   return (
     <StyledContainer>

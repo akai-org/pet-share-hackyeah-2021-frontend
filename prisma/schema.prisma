@@ -16,6 +16,7 @@ model user {
   avatarUrl          String?          @db.VarChar(255)
   address            String?          @db.VarChar(255)
   phone              String?          @db.VarChar(40)
+  city               String?          @db.VarChar(50)
   isActive           Boolean          @default(true)
   isOrganization     Boolean          @default(false)
   nip                String?

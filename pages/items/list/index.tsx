@@ -1,12 +1,14 @@
 import {Box} from '@mui/material';
 import type {NextPage} from 'next';
 import {useItems} from 'apis';
-import { Category } from '@components/ui/Category/Category';
-import items from '../../user/items';
-
+import {Category} from '@components/ui/Category/Category';
+import {router} from 'next/client';
 
 const Browse: NextPage = () => {
-  const {data, isLoading, error} = useItems()
+
+  const {userId} = router.query;
+  const {data, isLoading, error} = useItems({userId})
+
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -24,7 +26,7 @@ const Browse: NextPage = () => {
       }}
     >
        {data.map((item) => (
-        <Category name={item.name} categoryId={item.categoryId} id={item.id} key={item.name} imageUrl={item.imageUrl}/>
+         <Category name={item.name} categoryId={item.itemType.id} id={item.id} key={item.id} imageUrl={item.imageUrl}/>
        ))}
     </Box>
   )

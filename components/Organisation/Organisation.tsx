@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Typography } from '@mui/material';
 
 type Props = {
-  user: { username: string; address: string; imageUrl: string };
+  user: { username: string; address: string; imageUrl: string, id: number };
 };
 
 const StyledBox = styled(Box)`
@@ -34,7 +34,7 @@ export const Organisation: FunctionComponent<Props> = ({ user }) => {
   const { username, address, imageUrl } = user;
 
   return (
-    <Link passHref href={`/user/${username}`}>
+    <Link passHref href={`/user/${user.id}`}>
       <StyledBox>
         <img src={imageUrl} alt="Organization logo" />
         <Typography variant="h5" sx={{ textAlign: 'center' }}>
