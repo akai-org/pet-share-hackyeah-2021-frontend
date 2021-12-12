@@ -3,9 +3,9 @@ import { prisma } from 'db';
 
 export default nc()
   .get(async (req, res) => {
-    const {id} = req.query;
+    const { id } = req.query;
     const result = await prisma.item.findUnique({
-      where: { id:+id }
+      where: { id: +id },
     });
     res.json(result);
   });
