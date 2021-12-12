@@ -1,16 +1,21 @@
-import { Container, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import type { NextPage } from 'next';
+import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 
-const item = {
-  imageUrl: '/resources/zabawka.jpg',
-  title: 'Zabawka dla psa',
+const Browse: NextPage = () => {
+  const fetchedItems = [{ name: 'test1' }, { name: 'test2' }];
+  return (
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+      }}
+    >
+      {fetchedItems.map((item) => (
+        <ItemCard name={item.name} itemId={item.name} key={item.name} />
+      ))}
+    </Box>
+  );
 };
 
-const BrowseItemDetails: NextPage = () => (
-  <Container>
-    <img src={item.imageUrl} alt="Item" />
-    <Typography variant="h2">{item.title}</Typography>
-  </Container>
-);
-
-export default BrowseItemDetails;
+export default Browse;

@@ -5,16 +5,18 @@ import { useRouter } from 'next/router';
 
 type Props = {
   name: string;
-  categoryId: string;
+  categoryId: number;
+  imageUrl: string
+  id: number;
 };
 
-export const Category: FunctionComponent<Props> = ({ name, categoryId }) => {
+export const Category: FunctionComponent<Props> = ({ name, categoryId, imageUrl ,id}) => {
   const router = useRouter();
 
   return (
-    <Link passHref href={`${router.asPath}/${categoryId}`}>
+    <Link passHref href={`${router.asPath}/${categoryId}/${id}`}>
       <Card sx={{ maxWidth: 345, margin: '1em' }}>
-        <CardMedia component="img" height="140" src="https://cdn.frankerfacez.com/emoticon/262458/4" alt="sry" />
+        <CardMedia component="img" height="140" src={imageUrl} alt="sry" />
         <CardContent
           sx={{
             display: 'flex',
