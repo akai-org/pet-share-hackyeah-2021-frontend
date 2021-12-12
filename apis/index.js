@@ -11,3 +11,5 @@ export const getSometing = () => send('/api/user', 'post');
 export const useUserData = ({ userId }) => useQuery(['user', userId], () => send(`/api/user/${userId}`),{enabled:!!userId});
 
 export const useItems = () => useQuery([], ()=> send('/api/items'))
+
+export const postItem = ({ name, description, brandId, typeId, expirationDate, imageUrl }) => send('/api/items', 'post', { name, description, brandId, typeId, expirationDate, imageUrl });
