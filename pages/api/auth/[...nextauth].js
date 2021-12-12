@@ -26,5 +26,28 @@ export default NextAuth({
       }
       return true;
     },
+    session: async ({ session }) => {
+      const {
+        user: { email },
+        expires,
+      } = session;
+      const user = await prisma.user.findUnique({
+        where: { email },
+        select: {
+          id: true,
+          email: true,
+          username: true,
+          firstname: true,
+          lastname: true,
+          avatarUrl: true,
+          address: true,
+          phone: true,
+          isOrganization: true,
+          nip: true,
+          rating: true,
+        },
+      });
+      return { user, expires };
+    },
   },
 });
