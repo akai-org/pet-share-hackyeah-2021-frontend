@@ -39,6 +39,7 @@ const Create: NextPage = () => {
       label: 'Kraków',
     },
   ];
+
   const categories = [
     {
       value: 'KOC',
@@ -53,6 +54,7 @@ const Create: NextPage = () => {
       label: 'Karma',
     },
   ];
+
   return (
     <Container
       sx={{
