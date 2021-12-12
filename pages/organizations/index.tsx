@@ -1,11 +1,10 @@
-import {Box, Container, MenuItem, Select, SelectChangeEvent, Slider, Typography} from '@mui/material';
-import {Organisation} from '@components/Organisation/Organisation';
-import type {NextPage} from 'next';
+import { Box, Container, MenuItem, Select, SelectChangeEvent, Slider, Typography } from '@mui/material';
+import { Organisation } from '@components/Organisation/Organisation';
+import type { NextPage } from 'next';
 // @ts-ignore
 import styled from 'styled-components';
-import {useState} from 'react';
-import {useOrganizations} from 'apis';
-
+import { useState } from 'react';
+import { useOrganizations } from 'apis';
 
 const StyledContainer = styled(Container)`
   padding-top: 30px;
@@ -29,9 +28,8 @@ const StyledBox = styled(Box)`
 `;
 
 const Users: NextPage = () => {
-  const {data: organisations, isLoading, error} = useOrganizations()
+  const { data: organisations, isLoading, error } = useOrganizations();
   const [location, setLocation] = useState('Get Location');
-
 
   if (isLoading) {
     return <div>Loading...</div>;

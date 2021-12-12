@@ -1,17 +1,19 @@
-import React, { FunctionComponent, SyntheticEvent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { MdAddCircle, MdHomeFilled, MdOutlineMessage, MdOutlineToys } from 'react-icons/md';
 import { GoOrganization } from 'react-icons/go';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-// @ts-ignore
 import styled from 'styled-components';
 
 const StyledBottomNavigation = styled(BottomNavigation)`
   position: fixed;
   bottom: 0;
   width: 100%;
+  left: 0;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
 `;
 
 const NavBar: FunctionComponent = () => {

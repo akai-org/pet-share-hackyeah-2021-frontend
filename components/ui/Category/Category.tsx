@@ -1,21 +1,17 @@
 import { FunctionComponent } from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 type Props = {
   name: string;
-  categoryId: number;
-  imageUrl: string
+  imageUrl: string;
   id: number;
 };
 
-export const Category: FunctionComponent<Props> = ({ name, categoryId, imageUrl ,id}) => {
-  const router = useRouter();
-
+export const Category: FunctionComponent<Props> = ({ name, imageUrl, id }) => {
   return (
-    <Link passHref href={`${router.asPath}/${categoryId}/${id}`}>
-      <Card sx={{ maxWidth: 345, margin: '1em' }}>
+    <Link href={`/items/list/${id}`} passHref>
+      <Card sx={{ maxWidth: 345, margin: '1em' }} component="a">
         <CardMedia component="img" height="140" src={imageUrl} alt="sry" />
         <CardContent
           sx={{

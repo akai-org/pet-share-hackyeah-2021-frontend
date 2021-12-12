@@ -1,18 +1,18 @@
 import { FunctionComponent, useState } from 'react';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
 import { MdFavoriteBorder, MdSearch } from 'react-icons/md';
-import { IconButton, TextField } from '@mui/material';
+import { IconButton, TextField, Button, Box } from '@mui/material';
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { useSession, signIn } from 'next-auth/react';
 
-const ToolbarContainer = styled(Toolbar)`
+const ToolbarContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 `;
 
 const StyleBox = styled(Box)`
@@ -21,23 +21,18 @@ const StyleBox = styled(Box)`
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
   background-color: white;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
 `;
 
-const Logo = styled.img`
-  cursor: pointer;
+const Avatar = styled.a`
   width: 50px;
   height: 50px;
-  position: fixed;
-  top: 0;
-  left: calc(50% - 25px);
-`;
-
-const Avatar = styled.img`
-  width: 40px;
-  height: 40px;
-  border: 3px solid black;
-  border-radius: 30px;
+  display: block;
+  overflow: hidden;padding:0;
+  border: 2px solid black;
+  border-radius: 50%;
   :hover {
     cursor: pointer;
   }
@@ -52,7 +47,7 @@ export const Topbar: FunctionComponent = () => {
   const { data } = useSession();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
-
+  console.log(`data`, data);
   return (
     <StyleBox>
       <ToolbarContainer color="regular">
@@ -72,28 +67,32 @@ export const Topbar: FunctionComponent = () => {
             <MdSearch size={30} color="var(--secondary)" />
           </IconButton>
         </div>
-        <Link href="/" passHref>
-          <a>
-            <Logo src="/resources/favicon.png" />
-          </a>
-        </Link>
-        {data ? (
-          <Link href="/profile" passHref>
-            <a href="/profile">
-              <Avatar src={data.user.avatarUrl} />
+        <div>
+          <Link href="/">
+            <a>
+              <Image src="/resources/favicon.png" width={50} height={50} />
             </a>
           </Link>
-        ) : (
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={() => {
-              signIn('google');
-            }}
-          >
-            Login
-          </Button>
-        )}
+        </div>
+        <div>
+          {data ? (
+            <Link href="/profile" passHref>
+              <Avatar>
+                <Image src={data.user.avatarUrl} width={50} height={50} />
+              </Avatar>
+            </Link>
+          ) : (
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => {
+                signIn('google');
+              }}
+            >
+              Login
+            </Button>
+          )}
+        </div>
       </ToolbarContainer>
       {isSearch && <StyleTextField id="standard-basic" label="Search" variant="standard" />}
     </StyleBox>
