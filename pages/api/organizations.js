@@ -5,7 +5,13 @@ export default nc()
   .get(async (req, res) => {
     const result = await prisma.user.findMany({
       where: { isOrganization: true },
-      select: { id: true, username: true, city: true, address: true },
+      select: {
+        id: true,
+        username: true,
+        city: true,
+        address: true,
+        avatarUrl: true
+      },
     });
     res.json(result);
   });
