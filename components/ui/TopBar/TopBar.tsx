@@ -1,14 +1,14 @@
-import { FunctionComponent, useState } from 'react';
+import {FunctionComponent, useState} from 'react';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { MdFavoriteBorder, MdOutlineSettings, MdSearch } from 'react-icons/md';
-import { IconButton, TextField } from '@mui/material';
+import {MdFavoriteBorder, MdOutlineSettings, MdSearch} from 'react-icons/md';
+import {IconButton, TextField} from '@mui/material';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import { useSession, signIn } from 'next-auth/react';
-import { useAppContext } from '@context/AppContext';
+import {useRouter} from 'next/router';
+import {signIn, useSession} from 'next-auth/react';
+import {useAppContext} from '@context/AppContext';
 
 const ToolbarContainer = styled(Toolbar)`
   display: flex;
@@ -26,6 +26,7 @@ const StyleBox = styled(Box)`
 `;
 
 const Logo = styled.img`
+  cursor: pointer;
   width: 50px;
   height: 50px;
   position: sticky;
@@ -69,17 +70,19 @@ export const Topbar: FunctionComponent = () => {
               router.push('/user/settings');
             }}
           >
-            <MdOutlineSettings size={30} color="var(--secondary)" />
+            <MdOutlineSettings size={30} color="var(--secondary)"/>
           </IconButton>
           <IconButton
             onClick={() => {
               setSearch(!isSearch);
             }}
           >
-            <MdSearch size={30} color="var(--secondary)" />
+            <MdSearch size={30} color="var(--secondary)"/>
           </IconButton>
         </div>
-        <Logo src="/resources/favicon.png" />
+        <Link href="/">
+          <Logo src="/resources/favicon.png"/>
+        </Link>
         {session ? (
           <Link href={`/user/${session.user?.email}`}>
             <Avatar src={session.user?.image} />
