@@ -15,7 +15,12 @@ const Browse: NextPage = () => {
     return <div>Error</div>;
   }
 
-  return <div>dodaj ui, bo dane pobrało :D</div>;
+  return (
+    <div>
+      w budowie
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+    </div>
+  );
 };
 
 export default Browse;

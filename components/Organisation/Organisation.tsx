@@ -4,15 +4,20 @@ import Link from 'next/link';
 import { Typography } from '@mui/material';
 
 const ImageWrapper = styled.div`
-  width: 280px;
   height: 400px;
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  `;
 
 const StyledBox = styled.a`
+overflow: hidden;
   h5 {
     font-weight: bold;
     color: var(--secondary);
@@ -31,13 +36,14 @@ const StyledBox = styled.a`
   cursor: pointer;
 `;
 
-export const Organisation: FunctionComponent<Props> = ({ username, address, imageUrl, id }) => {
+export const Organisation: FunctionComponent<Props> = ({ username, address, avatarUrl, id }) => {
   return (
     <Link passHref href={`/user/${id}`}>
       <StyledBox>
         <ImageWrapper>
-          {imageUrl ? <img src={imageUrl} alt="Organization logo" /> : <div>Brak zdjęcia</div>}
+          {avatarUrl ? <img src={avatarUrl} alt="Organization logo" /> : <div>Brak zdjęcia</div>}
         </ImageWrapper>
+        <br/>
         <Typography variant="h5">{username}</Typography>
         <Typography variant="h6">{address}&nbsp;</Typography>
       </StyledBox>
