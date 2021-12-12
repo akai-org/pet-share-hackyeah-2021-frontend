@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import type { NextPage } from 'next';
-import { Category } from '@components/ui/Category/Category';
+import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 
 const Browse: NextPage = () => {
   const fetchedItems = [{ name: 'test1' }, { name: 'test2' }];
@@ -13,7 +13,7 @@ const Browse: NextPage = () => {
       }}
     >
       {fetchedItems.map((item) => (
-        <Category name={item.name} categoryId={item.name} key={item.name} />
+        <ItemCard name={item.name} categoryId={item.name} key={item.name} />
       ))}
     </Box>
   );
