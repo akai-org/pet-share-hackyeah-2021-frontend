@@ -26,12 +26,11 @@ const User: NextPage = () => {
             flexDirection: 'row',
             alignItems: 'center',
             height: '100px',
-            width: '100px',
-            background: 'gray ',
+            width: '100%',
           }}
         >
           <img src={dummyUser.profilePicture} alt="sry" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-          <h1 style={{ margin: '0 0 0 1em' }}>{dummyUser.username}</h1>
+          <h2 style={{ width: '100%', margin: '0 0 0 1em' }}>{dummyUser.username}</h2>
         </Box>
         <Box
           sx={{
@@ -50,10 +49,18 @@ const User: NextPage = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
+            paddingBottom: '5em',
           }}
         >
           {dummyUser.items.map((item) => (
-            <ItemCard name={item.name} itemId={item.name} />
+            <ItemCard
+              name={item.name}
+              category={item.category}
+              date={item.date}
+              image={item.image}
+              itemId={item.name}
+              key={item.name}
+            />
           ))}
         </Box>
       </Container>

@@ -22,7 +22,14 @@ const Create: NextPage = () => {
   };
 
   const addItem = () => {
-    user?.items.push(new Item('create_test'));
+    user?.items.push(
+      new Item(
+        'New Item',
+        'Category',
+        new Date(2022, 1),
+        'https://www.seekpng.com/png/detail/960-9609689_red-question-mark-symbol-question-mark.png'
+      )
+    );
   };
 
   const cities = [
@@ -59,6 +66,9 @@ const Create: NextPage = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'space-around',
+        padding: '2em 0',
+        height: '50vh',
       }}
     >
       <label htmlFor="contained-button-file">

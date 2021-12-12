@@ -5,23 +5,33 @@ import AppContext, { defaultState } from '.';
 
 export const AppProvider: FunctionComponent = ({ children }) => {
   const [user, setUser] = useState<User | null>(defaultState.user);
+  const [item, setItem] = useState<Item | null>(defaultState.selectedItem);
 
   function getUser(username: string, password: string): User {
     const fetchedUser = new User(
       username,
-      'https://data4.cupsell.pl/upload/generator/73795/640x420/5639065_print_1.png?resize=max_sizes&key=55f9a22768eed085006592c1174c0235',
+      'https://www.seekpng.com/png/detail/960-9609689_red-question-mark-symbol-question-mark.png',
       4,
       'Warszawa',
       [
-        new Item('test'),
-        new Item('test2'),
-        new Item('test3'),
-        new Item('test4'),
-        new Item('test5'),
-        new Item('test6'),
-        new Item('test7'),
-        new Item('test8'),
-        new Item('test9'),
+        new Item(
+          'Koce',
+          'Psy',
+          new Date(2022, 1),
+          'https://homla.com.pl/media/catalog/product/cache/e252c4074c67ade3f792d8397da5c502/5/9/5902869959626.jpg'
+        ),
+        new Item(
+          'Smycze',
+          'Psy',
+          new Date(2022, 1),
+          'https://shop-cdn-m.mediazs.com/bilder/smycz/flexi/cat/new/classic/0/400/65102_flexi_cat_new_classic_xs_hs_3_0.jpg'
+        ),
+        new Item(
+          'Karma',
+          'Koty',
+          new Date(2022, 1, 1),
+          'https://image.ceneostatic.pl/data/products/44596520/i-whiskas-1-lat-z-kurczakiem-w-sosie-karma-dla-kota-puszka-400g.jpg'
+        ),
       ]
     );
     return fetchedUser;
@@ -31,13 +41,19 @@ export const AppProvider: FunctionComponent = ({ children }) => {
     setUser(getUser(username, password));
   }
 
+  function storeItem(newItem: Item): void {
+    setItem(newItem);
+  }
+
   const value = React.useMemo(
     () => ({
       user,
       fetchUser: getUser,
       updateUser: storeUser,
+      item,
+      updateItem: storeItem,
     }),
-    [user]
+    [user, item]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

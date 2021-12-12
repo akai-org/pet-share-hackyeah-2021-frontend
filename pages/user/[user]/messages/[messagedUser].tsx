@@ -1,4 +1,4 @@
-import { Box, Container, TextField } from '@mui/material';
+import { Container, TextField } from '@mui/material';
 import type { NextPage } from 'next';
 import { Message } from '@components/ui/Message/Message';
 import { useAppContext } from '@context/AppContext';
@@ -68,74 +68,13 @@ const MessagedUser: NextPage = () => {
       username: 'dummyUser',
       message: 'banana',
     },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
-    {
-      username: 'test',
-      message: 'hello',
-    },
-    {
-      username: 'dummyUser',
-      message: 'banana',
-    },
   ];
 
   function sendMessage(event) {
-    console.log(event.target.value);
+    messageHistory.push({
+      username: 'dummyUser',
+      message: event.target.value,
+    });
   }
 
   function handleSubmit(event) {
@@ -148,10 +87,15 @@ const MessagedUser: NextPage = () => {
     <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Container sx={{ maxHeight: '75vh', overflowY: 'scroll' }}>
         {messageHistory.map((message) => (
-          <Message username={message.username} message={message.message} isRight={message.username === user.username} />
+          <Message
+            username={message.username}
+            message={message.message}
+            isRight={message.username === user?.username}
+            key={message.message}
+          />
         ))}
       </Container>
-      <TextField variant="outlined" placeholder="Enter a message" onKeyDown={handleSubmit} />
+      <TextField variant="outlined" placeholder="Enter a message" onKeyDown={(event) => handleSubmit(event)} />
     </Container>
   );
 };
