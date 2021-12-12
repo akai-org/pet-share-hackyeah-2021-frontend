@@ -1,11 +1,11 @@
 import type {NextPage} from 'next';
-import {useRouter} from 'next/router';
 import {Typography} from '@mui/material';
 import styled from 'styled-components';
 import Link from 'next/link';
+import {useSession} from 'next-auth/react';
 
 const Messages: NextPage = () => {
-  const router = useRouter();
+  const {data: session} = useSession();
 
   const profiles = [
     {
@@ -70,7 +70,7 @@ const Messages: NextPage = () => {
   return (
     <div>
       {profiles.map((profile) => (
-        <Link href="/">
+        <Link href={`/user/${session?.user?.email}/messages/${profile.email}`}>
           <ProfileMessage>
             <img src={profile.imageUrl} alt={profile.username}/>
             <Typography variant="h4">{profile.username}</Typography>
