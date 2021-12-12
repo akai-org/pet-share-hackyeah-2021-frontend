@@ -17,8 +17,8 @@ const NavBar: FunctionComponent = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [value, setValue] = useState(router.pathname);
-  const addItemPath = session ? `/user/${session.user.email}/create` : '/login';
-  const messagesPath = session ? `/user/${session.user.email}/messages` : '/login';
+  const addItemPath = session ? `/user/${session.user?.name}/create` : '/login';
+  const messagesPath = session ? `/user/${session.user?.name}/messages` : '/login';
 
   return (
     <StyledBottomNavigation

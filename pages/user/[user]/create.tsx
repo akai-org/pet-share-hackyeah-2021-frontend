@@ -3,15 +3,13 @@ import { Item } from '@data/item';
 import { Button, Container, MenuItem, styled, TextField } from '@mui/material';
 import type { NextPage } from 'next';
 import React from 'react';
-import { useSession } from 'next-auth/react'
 
 const Input = styled('input')({
   display: 'none',
 });
 
 const Create: NextPage = () => {
-  const { data } = useSession()
-  console.log(data)
+  const { user } = useAppContext();
   const [city, setCity] = React.useState('PZN');
   const [category, setCategory] = React.useState('KOC');
 
@@ -24,9 +22,38 @@ const Create: NextPage = () => {
   };
 
   const addItem = () => {
-    // user?.items.push(new Item('create_test'));
+    user?.items.push(new Item('create_test'));
   };
 
+  const cities = [
+    {
+      value: 'PZN',
+      label: 'Poznań',
+    },
+    {
+      value: 'WAR',
+      label: 'Warszawa',
+    },
+    {
+      value: 'KRK',
+      label: 'Kraków',
+    },
+  ];
+
+  const categories = [
+    {
+      value: 'KOC',
+      label: 'Kocyk',
+    },
+    {
+      value: 'KOT',
+      label: 'Koteczek',
+    },
+    {
+      value: 'KAR',
+      label: 'Karma',
+    },
+  ];
 
   return (
     <Container

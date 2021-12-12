@@ -1,19 +1,28 @@
-import {Box, Container, Rating, Typography} from '@mui/material';
-import type {NextPage} from 'next';
-import {useRouter} from 'next/router';
-import {ItemCard} from '@components/ui/ItemCard/ItemCard';
-import {useSession} from 'next-auth/react';
+import { Box, Container } from '@mui/material';
+import type { NextPage } from 'next';
+import { ItemCard } from '@components/ui/ItemCard/ItemCard';
+import { useSession } from 'next-auth/react';
+import { useAppContext } from '@context/AppContext';
+import { User as UserData } from '@data/user';
+import { useRouter } from 'next/router';
 
 const User: NextPage = () => {
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
+  const { user, fetchUser, updateUser } = useAppContext();
 
-  if (!session) {
-    return <Typography variant="h1">Zaloguj się</Typography>;
+  let dummyUser: UserData | null = null;
+  if (router.query.user) {
+    if (router.query.user === session?.user?.name) {
+      if (user == null) updateUser(session?.user?.name, '123');
+      dummyUser = user;
+    } else {
+      dummyUser = fetchUser(router.query.user, '123');
+    }
   }
 
   return (
-    session && (
+    dummyUser && (
       <Container>
         <Box
           sx={{
@@ -25,10 +34,10 @@ const User: NextPage = () => {
             background: 'gray ',
           }}
         >
-          <img src={session.profilePicture} alt="sry" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-          <h1 style={{ margin: '0 0 0 1em' }}>{session.username}</h1>
+          <img src={dummyUser.image} alt="sry" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+          <h1 style={{ margin: '0 0 0 1em' }}>{dummyUser.name}</h1>
         </Box>
-        <Box
+        {/* <Box
           sx={{
             display: 'flex',
             flexDirection: 'row',
@@ -36,18 +45,18 @@ const User: NextPage = () => {
           }}
         >
           <h3 style={{ margin: '0 0.5em 0 0' }}>Ocena:</h3>
-          <Rating name="read-only" value={session.rating} readOnly />
+          <Rating name="read-only" value={dummyUser.rating} readOnly />
         </Box>
         <Box>
-          <h3>Lokalizacja: {session.localization}</h3>
-        </Box>
+          <h3>Lokalizacja: {dummyUser.localization}</h3>
+        </Box> */}
         <Box
           sx={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
           }}
         >
-          {session.items.map((item) => (
+          {dummyUser.items.map((item) => (
             <ItemCard name={item.name} itemId={item.name} />
           ))}
         </Box>
