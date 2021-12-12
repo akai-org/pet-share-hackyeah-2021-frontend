@@ -2,7 +2,6 @@ import { Box, Button, Container } from '@mui/material';
 import type { NextPage } from 'next';
 
 const ItemDetails: NextPage = () => (
-
   <Container>
     <div
       style={{

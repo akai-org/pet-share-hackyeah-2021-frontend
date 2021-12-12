@@ -1,14 +1,13 @@
-import {FunctionComponent, useState} from 'react';
+import { FunctionComponent, useState } from 'react';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import {MdFavoriteBorder, MdOutlineSettings, MdSearch} from 'react-icons/md';
-import {IconButton, TextField} from '@mui/material';
+import { MdFavoriteBorder, MdOutlineSettings, MdSearch } from 'react-icons/md';
+import { IconButton, TextField } from '@mui/material';
 import Link from 'next/link';
 import styled from 'styled-components';
-import {useRouter} from 'next/router';
-import {signIn, useSession} from 'next-auth/react';
-import {useAppContext} from '@context/AppContext';
+import { useRouter } from 'next/router';
+import { useSession, signIn } from 'next-auth/react';
 
 const ToolbarContainer = styled(Toolbar)`
   display: flex;
@@ -51,7 +50,6 @@ const StyleTextField = styled(TextField)`
 
 export const Topbar: FunctionComponent = () => {
   const { data: session } = useSession();
-  const { updateUser } = useAppContext();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
   return (
@@ -93,7 +91,6 @@ export const Topbar: FunctionComponent = () => {
             color="secondary"
             onClick={() => {
               signIn('google');
-              updateUser(`${session?.user?.name}`, '123');
             }}
           >
             Login

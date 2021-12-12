@@ -7,7 +7,6 @@ import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query';
 import styled from 'styled-components';
 import '../styles/globals.css';
-import { AppProvider } from '@context/AppContext/AppProvider';
 
 const theme = createTheme({
   typography: {
@@ -32,23 +31,21 @@ const MyApp = ({ Component, pageProps }) => {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
-    <AppProvider>
-      <SessionProvider session={pageProps.session}>
-        <ThemeProvider theme={theme}>
-          <SnackbarProvider>
-            <QueryClientProvider client={queryClient}>
-              <Hydrate state={pageProps.dehydratedState}>
-                <Topbar />
-                <StyledComponent>
-                  <Component {...pageProps} />
-                </StyledComponent>
-                <NavBar />
-              </Hydrate>
-            </QueryClientProvider>
-          </SnackbarProvider>
-        </ThemeProvider>
-      </SessionProvider>
-    </AppProvider>
+    <SessionProvider session={pageProps.session}>
+      <ThemeProvider theme={theme}>
+        <SnackbarProvider>
+          <QueryClientProvider client={queryClient}>
+            <Hydrate state={pageProps.dehydratedState}>
+              <Topbar />
+              <StyledComponent>
+                <Component {...pageProps} />
+              </StyledComponent>
+              <NavBar />
+            </Hydrate>
+          </QueryClientProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
+    </SessionProvider>
   );
 };
 
