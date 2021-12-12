@@ -25,8 +25,8 @@ const Home: NextPage = () => (
   <StyledContainer>
     <Logo src="/resources/logo.png" alt="PetApp" />
     <NavigationContainer>
-      <NavigationTile href="/social/users">Organizations</NavigationTile>
-      <NavigationTile href="/market/browse">Available Items</NavigationTile>
+      <NavigationTile href="/organizations">Organizations</NavigationTile>
+      <NavigationTile href="/items/list">Available Items</NavigationTile>
       <NavigationTile href="/about">About Us</NavigationTile>
     </NavigationContainer>
   </StyledContainer>
