@@ -74,7 +74,7 @@ const Messages: NextPage = () => {
   return (
     <div>
       {profiles.map((profile) => (
-        <Link href={`/user/${session?.user?.email}/messages/${profile.email}`}>
+        <Link href={`/messages/${profile.email}`}>
           <ProfileMessage>
             <img src={profile.imageUrl} alt={profile.username} />
             <Typography variant="h4">{profile.username}</Typography>

@@ -28,9 +28,9 @@ const Logo = styled.img`
   cursor: pointer;
   width: 50px;
   height: 50px;
-  position: sticky;
+  position: fixed;
   top: 0;
-  right: calc(50% - 25px);
+  left: calc(50% - 25px);
 `;
 
 const Avatar = styled.img`
@@ -80,7 +80,7 @@ export const Topbar: FunctionComponent = () => {
         {data ? (
           <Link href="/profile" passHref>
             <a href="/profile">
-              <Avatar src={data.user.image} />
+              <Avatar src={data.user.avatarUrl} />
             </a>
           </Link>
         ) : (

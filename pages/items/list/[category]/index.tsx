@@ -4,7 +4,6 @@ import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 
 const Browse: NextPage = () => {
   const fetchedItems = [{ name: 'test1' }, { name: 'test2' }];
-
   return (
     <Box
       sx={{
