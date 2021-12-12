@@ -25,6 +25,7 @@ const StyleBox = styled(Box)`
 `;
 
 const Logo = styled.img`
+  cursor: pointer;
   width: 50px;
   height: 50px;
   position: sticky;
@@ -67,17 +68,19 @@ export const Topbar: FunctionComponent = () => {
               router.push('/user/settings');
             }}
           >
-            <MdOutlineSettings size={30} color="var(--secondary)" />
+            <MdOutlineSettings size={30} color="var(--secondary)"/>
           </IconButton>
           <IconButton
             onClick={() => {
               setSearch(!isSearch);
             }}
           >
-            <MdSearch size={30} color="var(--secondary)" />
+            <MdSearch size={30} color="var(--secondary)"/>
           </IconButton>
         </div>
-        <Logo src="/resources/favicon.png" />
+        <Link href="/">
+          <Logo src="/resources/favicon.png"/>
+        </Link>
         {session ? (
           <Link href={`/user/${session.user?.email}`}>
             <Avatar src={session.user?.image} />
