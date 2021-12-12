@@ -53,7 +53,6 @@ export const Topbar: FunctionComponent = () => {
   const { updateUser } = useAppContext();
   const [isSearch, setSearch] = useState(false);
   const router = useRouter();
-  console.log(session);
   return (
     <StyleBox>
       <ToolbarContainer color="regular">
