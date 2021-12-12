@@ -18,6 +18,8 @@ model user {
   phone              String?          @db.VarChar(40)
   isActive           Boolean          @default(true)
   isOrganization     Boolean          @default(false)
+  nip                String?
+  rating             Float            @default(0.0)
   lastLogin          DateTime         @updatedAt
   createdAt          DateTime         @default(now())
   itemNeed           itemNeed[]
