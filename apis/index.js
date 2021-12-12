@@ -9,3 +9,9 @@ const send = async (url, method = 'get', data = {}, headers = {}) => {
 export const getSometing = () => send('/api/user', 'post');
 
 export const useUserData = ({ userId }) => useQuery(['user', userId], () => send(`/api/user/${userId}`));
+
+export const getUserItems = ({ userId }) => useQuery(['user', userId], () => send(`/api/items/listing/user/${userId}`));
+
+export const getTypeItems = ({ typeId }) => useQuery(['type', typeId], () => send(`/api/items/type/${typeId}`));
+
+export const getBrandItems = ({ brandId }) => useQuery(['brand', brandId], () => send(`/api/items/type/${brandId}`));
