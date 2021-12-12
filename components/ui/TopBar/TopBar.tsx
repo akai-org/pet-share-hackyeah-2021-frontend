@@ -30,7 +30,8 @@ const Avatar = styled.a`
   width: 50px;
   height: 50px;
   display: block;
-  overflow: hidden;padding:0;
+  overflow: hidden;
+  padding: 0;
   border: 2px solid black;
   border-radius: 50%;
   :hover {
@@ -69,7 +70,7 @@ export const Topbar: FunctionComponent = () => {
         </div>
         <div>
           <Link href="/">
-            <a>
+            <a href="/">
               <Image src="/resources/favicon.png" width={50} height={50} />
             </a>
           </Link>

@@ -14,10 +14,10 @@ const ImageWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
-  `;
+`;
 
 const StyledBox = styled.a`
-overflow: hidden;
+  overflow: hidden;
   h5 {
     font-weight: bold;
     color: var(--secondary);
@@ -36,14 +36,14 @@ overflow: hidden;
   cursor: pointer;
 `;
 
-export const Organisation: FunctionComponent<Props> = ({ username, address, avatarUrl, id }) => {
+export const Organisation = ({ username, address, avatarUrl, id }: any) => {
   return (
     <Link passHref href={`/user/${id}`}>
       <StyledBox>
         <ImageWrapper>
           {avatarUrl ? <img src={avatarUrl} alt="Organization logo" /> : <div>Brak zdjęcia</div>}
         </ImageWrapper>
-        <br/>
+        <br />
         <Typography variant="h5">{username}</Typography>
         <Typography variant="h6">{address}&nbsp;</Typography>
       </StyledBox>
