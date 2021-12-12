@@ -11,8 +11,8 @@ export const getSometing = () => send('/api/user', 'post');
 export const useItems = () => useQuery([], ()=> send('/api/items'))
 export const useUserData = ({ userId }) => useQuery(['user', userId], () => send(`/api/user/${userId}`));
 
-export const getUserItems = ({ userId }) => useQuery(['user', userId], () => send(`/api/items/listing/user/${userId}`));
+export const useUserItems = ({ userId }) => useQuery(['user', userId], () => send(`/api/items/listing/user/${userId}`));
 
-export const getTypeItems = ({ typeId }) => useQuery(['type', typeId], () => send(`/api/items/type/${typeId}`));
+export const useTypeItems = ({ typeId }) => useQuery(['type', typeId], () => send(`/api/items/type/${typeId}`));
 
-export const getBrandItems = ({ brandId }) => useQuery(['brand', brandId], () => send(`/api/items/type/${brandId}`));
+export const useBrandItems = ({ brandId }) => useQuery(['brand', brandId], () => send(`/api/items/type/${brandId}`));
