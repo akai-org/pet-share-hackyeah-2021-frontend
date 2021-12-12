@@ -2,25 +2,13 @@ import { Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
 import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 import { useSession } from 'next-auth/react';
-import { useAppContext } from '@context/AppContext';
-import { User as UserData } from '@data/user';
 import { useRouter } from 'next/router';
 
 const User: NextPage = () => {
-  const { data: session } = useSession();
+  const { data } = useSession();
   const router = useRouter();
-  const { user, fetchUser, updateUser } = useAppContext();
 
-  let dummyUser: UserData | null = null;
-  if (router.query.user) {
-    if (router.query.user === session?.user?.name) {
-      if (user == null) updateUser(session?.user?.name, '123');
-      dummyUser = user;
-    } else {
-      dummyUser = fetchUser(router.query.user, '123');
-    }
-  }
-
+  return null; // ustawić dla zalogowanego/ nie zalogowanego uzytkownika
   return (
     dummyUser && (
       <Container>

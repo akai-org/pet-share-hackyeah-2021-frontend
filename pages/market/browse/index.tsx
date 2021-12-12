@@ -1,12 +1,9 @@
-import {Box} from '@mui/material';
-import type {NextPage} from 'next';
-import {ItemCard} from '@components/ui/ItemCard/ItemCard';
+import { Box } from '@mui/material';
+import type { NextPage } from 'next';
+import { ItemCard } from '@components/ui/ItemCard/ItemCard';
 
 const Browse: NextPage = () => {
-  const fetchedItems = [
-    {name: 'test1'},
-    {name: 'test2'},
-  ];
+  const fetchedItems = [{ name: 'test1' }, { name: 'test2' }];
 
   return (
     <Box

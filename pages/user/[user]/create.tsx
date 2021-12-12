@@ -1,5 +1,3 @@
-import { useAppContext } from '@context/AppContext';
-import { Item } from '@data/item';
 import { Button, Container, MenuItem, styled, TextField } from '@mui/material';
 import type { NextPage } from 'next';
 import React from 'react';
@@ -9,7 +7,6 @@ const Input = styled('input')({
 });
 
 const Create: NextPage = () => {
-  const { user } = useAppContext();
   const [city, setCity] = React.useState('PZN');
   const [category, setCategory] = React.useState('KOC');
 
@@ -21,9 +18,7 @@ const Create: NextPage = () => {
     setCategory(event.target.value);
   };
 
-  const addItem = () => {
-    user?.items.push(new Item('create_test'));
-  };
+  const addItem = () => {};
 
   const cities = [
     {
