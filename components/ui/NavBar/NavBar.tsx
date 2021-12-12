@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 const StyledBottomNavigation = styled(BottomNavigation)`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   left: 0;

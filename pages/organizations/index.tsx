@@ -1,7 +1,6 @@
-import { Box, Container, MenuItem, Select, SelectChangeEvent, Slider, Typography } from '@mui/material';
+import { Container, MenuItem, Select, SelectChangeEvent, Slider, Typography } from '@mui/material';
 import { Organisation } from '@components/Organisation/Organisation';
 import type { NextPage } from 'next';
-// @ts-ignore
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useOrganizations } from 'apis';
@@ -23,14 +22,18 @@ const StyledContainer = styled(Container)`
   }
 `;
 
-const StyledBox = styled(Box)`
-  margin: 1.5em 0;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  width: 100%;
 `;
 
 const Users: NextPage = () => {
   const { data: organisations, isLoading, error } = useOrganizations();
   const [location, setLocation] = useState('Get Location');
-
+  console.log(`organisations`, organisations);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -67,14 +70,11 @@ const Users: NextPage = () => {
         max={50}
         sx={{ width: '60%' }}
       />
-      {organisations.map(
-        (org) =>
-          (org.address.includes(location) || location === 'Get Location') && (
-            <StyledBox key={org.id}>
-              <Organisation user={org} />
-            </StyledBox>
-          )
-      )}
+      <Wrapper>
+        {organisations.map((org) => (
+          <Organisation key={org.id} {...org} />
+        ))}
+      </Wrapper>
     </StyledContainer>
   );
 };

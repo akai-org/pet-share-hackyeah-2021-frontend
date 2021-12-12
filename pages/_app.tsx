@@ -23,8 +23,8 @@ const theme = createTheme({
   },
 });
 
-const StyledComponent = styled.div`
-  height: calc(100vh - 112px);
+const StyledComponent = styled.main`
+  min-height: 100vh;
 `;
 
 const MyApp = ({ Component, pageProps }) => {

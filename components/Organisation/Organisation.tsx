@@ -1,25 +1,26 @@
 import { FunctionComponent } from 'react';
-import Box from '@mui/material/Box';
-// @ts-ignore
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Typography } from '@mui/material';
 
-type Props = {
-  user: { username: string; address: string; imageUrl: string, id: number };
-};
+const ImageWrapper = styled.div`
+  width: 280px;
+  height: 400px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const StyledBox = styled(Box)`
-  img {
-    width: 80vw;
-    height: 80vw;
-    padding: 20px;
-  }
+const StyledBox = styled.a`
   h5 {
     font-weight: bold;
     color: var(--secondary);
     text-decoration: underline;
   }
+  height: 500px;
+  width: min(100%, 350px);
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,19 +31,15 @@ const StyledBox = styled(Box)`
   cursor: pointer;
 `;
 
-export const Organisation: FunctionComponent<Props> = ({ user }) => {
-  const { username, address, imageUrl } = user;
-
+export const Organisation: FunctionComponent<Props> = ({ username, address, imageUrl, id }) => {
   return (
-    <Link passHref href={`/user/${user.id}`}>
+    <Link passHref href={`/user/${id}`}>
       <StyledBox>
-        <img src={imageUrl} alt="Organization logo" />
-        <Typography variant="h5" sx={{ textAlign: 'center' }}>
-          {username}
-        </Typography>
-        <Typography variant="h6" sx={{ textAlign: 'center' }}>
-          {address}
-        </Typography>
+        <ImageWrapper>
+          {imageUrl ? <img src={imageUrl} alt="Organization logo" /> : <div>Brak zdjęcia</div>}
+        </ImageWrapper>
+        <Typography variant="h5">{username}</Typography>
+        <Typography variant="h6">{address}&nbsp;</Typography>
       </StyledBox>
     </Link>
   );
