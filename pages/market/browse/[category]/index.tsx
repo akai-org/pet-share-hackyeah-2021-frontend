@@ -13,7 +13,7 @@ const Browse: NextPage = () => {
       }}
     >
       {fetchedItems.map((item) => (
-        <ItemCard name={item.name} categoryId={item.name} key={item.name} />
+        <ItemCard name={item.name} itemId={item.name} key={item.name} />
       ))}
     </Box>
   );
