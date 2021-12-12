@@ -1,12 +1,23 @@
 import { Box, Container } from '@mui/material';
 import type { NextPage } from 'next';
 import { ItemCard } from '@components/ui/ItemCard/ItemCard';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { useUserData } from 'apis';
 
 const User: NextPage = () => {
-  const { data } = useSession();
   const router = useRouter();
+  const { userId } = router.query;
+  const { data, isLoading, error } = useUserData({ userId });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>nie udało siee pobrać danych</div>;
+  }
+
+  console.log(`router.query`, router.query, data);
 
   return null; // ustawić dla zalogowanego/ nie zalogowanego uzytkownika
   return (
