@@ -8,8 +8,14 @@ const send = async (url, method = 'get', data = {}, headers = {}) => {
 
 export const getSometing = () => send('/api/user', 'post');
 
-export const useUserData = ({ userId }) => useQuery(['user', userId], () => send(`/api/user/${userId}`),{enabled:!!userId});
-
 export const useItems = () => useQuery([], ()=> send('/api/items'))
 
 export const postItem = ({ name, description, brandId, typeId, expirationDate, imageUrl }) => send('/api/items', 'post', { name, description, brandId, typeId, expirationDate, imageUrl });
+
+export const useUserData = ({ userId }) => useQuery(['user', userId], () => send(`/api/user/${userId}`));
+
+export const useUserItems = ({ userId }) => useQuery(['user', userId], () => send(`/api/items/listing/user/${userId}`));
+
+export const useTypeItems = ({ typeId }) => useQuery(['type', typeId], () => send(`/api/items/type/${typeId}`));
+
+export const useBrandItems = ({ brandId }) => useQuery(['brand', brandId], () => send(`/api/items/type/${brandId}`));

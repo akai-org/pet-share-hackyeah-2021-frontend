@@ -51,6 +51,7 @@ model item {
   description    String
   brandId        Int
   typeId         Int
+  city           String           @db.Varchar(255)
   expirationDate DateTime?
   imageUrl       String
   itemBrand      itemBrand        @relation(fields: [brandId], references: [id], onDelete: Cascade)
