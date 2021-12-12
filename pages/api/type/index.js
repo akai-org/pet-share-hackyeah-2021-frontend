@@ -9,10 +9,7 @@ export default nc()
   .post(async (req, res) => {
     const { name } = req.body;
     await prisma.itemType.create({
-      data: {
-        name
-      }
-    })
-    res.status(201).json({ response: "ok"});
-  })
-;
+      data: { name },
+    });
+    res.status(201).json({ response: 'ok' });
+  });
